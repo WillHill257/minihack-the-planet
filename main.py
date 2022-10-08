@@ -1,6 +1,30 @@
 import gym
 import minihack
 from nle import nethack
+from DQN.agent import DQNAgent
+from DQN.replay_buffer import ReplayBuffer
+import random
+import numpy as np
+
+hyper_params = {
+    "seed": 42,  # which seed to use
+    "env": "MiniHack-ExploreMaze-Easy-v0",  # name of the game
+    "replay-buffer-size": int(5e3),  # replay buffer size
+    "learning-rate": 1e-4,  # learning rate for Adam optimizer
+    "discount-factor": 0.99,  # discount factor
+    "num-steps": int(1e6),  # total number of steps to run the environment for
+    "num-episodes": 1000,  # total number of episodes to run the environment for
+    "batch-size": 256,  # number of transitions to optimize at the same time
+    "learning-starts": 10000,  # number of steps before learning starts
+    "learning-freq": 5,  # number of iterations between every optimization step
+    "use-double-dqn": True,  # use double deep Q-learning
+    "target-update-freq": 1000,  # number of iterations between every target network update
+    "eps-start": 1.0,  # e-greedy start threshold
+    "eps-end": 0.01,  # e-greedy end threshold
+    "eps-fraction": 0.1,  # fraction of num-steps over which to decay epsilon
+    "print-freq": 1,
+
+}
 
 MOVE_ACTIONS = tuple(nethack.CompassDirection) # h,j,k,l,y,u,b,n
 ALL_ACTIONS = MOVE_ACTIONS + (
@@ -16,12 +40,99 @@ ALL_ACTIONS = MOVE_ACTIONS + (
 
 )
 
+replay_buffer = ReplayBuffer(hyper_params['replay-buffer-size'])
+
 env = gym.make(
-    "MiniHack-MazeExplore-Easy-v0",
-    observation_keys=["glyphs", "blstats", "inv_glyphs", "inv_letters"],
+    hyper_params["env"],
+    observation_keys=["glyphs_crop"],
     actions=ALL_ACTIONS,
 )
+
+agent = DQNAgent(
+    env.observation_space,
+    env.action_space,
+    replay_buffer,
+    use_double_dqn=hyper_params['use-double-dqn'],
+    learning_rate=hyper_params['learning-rate'],
+    batch_size=hyper_params['batch-size'],
+    discount_factor=hyper_params['discount-factor'],
+    gamma=hyper_params['discount-factor'],
+)
+
+
 # actions[50] == PRAY
-observation = env.reset() # each reset generates a new environment instance
-observation, reward, terminated, info = env.step(1)  # move agent '@' north
-env.render()
+state = env.reset() # each reset generates a new environment instance
+
+t = 0
+num_episodes = 0
+while t < hyper_params['num-steps'] and num_episodes < hyper_params['num-episodes']:
+    done = False
+
+    episode_rewards = []
+    episode_loss = []
+
+    while not done:
+        t += 1
+
+        eps_threshold = 0.1
+
+        #  select random action if sample is less equal than eps_threshold, else the agent acts greedily
+        sample = random.random()
+        if sample <= eps_threshold:
+            action = env.action_space.sample()
+        else:
+            action = agent.act(np.array(state))
+
+        action = agent.act(state)
+
+        next_state, reward, done, info = env.step(action)
+
+        # add state, action, reward, next_state, float(done) to replay buffer - cast done to float
+        agent.memory.add(state, action, reward, next_state, float(done))
+
+        # update the state for the next iteration
+        state = next_state
+
+        # add reward to episode_reward
+        episode_rewards[-1] += reward
+
+        if done:
+            state = env.reset()
+            episode_rewards.append(0.0)
+            episode_loss.append(average_loss / num_actions)
+            average_loss = 0
+            num_actions = 1
+            num_episodes += 1
+
+
+        # governs how often we update the weights of our network (e.g. via backprop)
+        if (
+            t > hyper_params['learning-starts']
+            and t % hyper_params['learning-freq'] == 0
+        ):
+            average_loss += agent.optimise_td_loss()
+            num_actions += 1
+
+
+        # governs how often we update the target network to the current network
+        if (
+            t > hyper_params["learning-starts"]
+            and t % hyper_params["target-update-freq"] == 0
+        ):
+            agent.update_target_network()
+
+        # print a progress update at the end of episode
+        if (
+            done
+            and hyper_params["print-freq"] is not None
+            and len(episode_rewards) % hyper_params["print-freq"] == 0
+        ):
+            mean_100ep_reward = round(np.mean(episode_rewards[-101:-1]), 1)
+            mean_100ep_loss = round(np.mean(episode_loss[-101:-1]), 8)
+            print("********************************************************")
+            print("steps: {}".format(t))
+            print("episodes: {}".format(num_episodes))
+            print("mean 100 episode reward: {}".format(mean_100ep_reward))
+            print("mean 100 episode loss: {}".format(mean_100ep_loss))
+            print("% time spent exploring: {}".format(int(100 * eps_threshold)))
+            print("********************************************************")
