@@ -6,7 +6,9 @@ from DQN.replay_buffer import ReplayBuffer
 import torch
 import torch.nn.functional as F
 
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
+print("device:", device)
 
 
 class DQNAgent:
@@ -39,7 +41,6 @@ class DQNAgent:
         self.target_network = DQN(observation_space, action_space).to(device)
         self.update_target_network()  # the two networks are randomly initialised -> this ensures we start from a consistent view
         self.target_network.eval()  # we always want the target network in eval mode because we never train on it, only use to get the target values
-
         # use an ADAM optimiser
         self.optimiser = torch.optim.Adam(
             self.policy_network.parameters(), lr=lr
@@ -56,14 +57,14 @@ class DQNAgent:
         )
 
         # normalise the pixel values to [0, 1]
-        states = np.array(states) / 255.0
-        next_states = np.array(next_states) / 255.0
+        states = np.array(states) / 5991.0
+        next_states = np.array(next_states) / 5991.0
 
         # create tensors from the numpy arrays for use with pytorch
-        states = torch.from_numpy(states).float().to(device)
+        states = torch.from_numpy(states).float().unsqueeze(1).to(device)
         actions = torch.from_numpy(actions).long().to(device)
         rewards = torch.from_numpy(rewards).float().to(device)
-        next_states = torch.from_numpy(next_states).float().to(device)
+        next_states = torch.from_numpy(next_states).float().unsqueeze(1).to(device)
         dones = torch.from_numpy(dones).float().to(device)
 
         # get the output values from the target network
@@ -125,7 +126,7 @@ class DQNAgent:
         :return: the action to take
         """
         state = np.array(state) / 5991.0
-        state = torch.from_numpy(state).float().unsqueeze(0).to(device)
+        state = torch.from_numpy(state).float().unsqueeze(0).unsqueeze(0).to(device)
 
         # do not accumulate gradients here, since we are simply evaluating, and not training
         with torch.no_grad():
@@ -134,21 +135,22 @@ class DQNAgent:
             _, action = q_values.max(1)
             return action.item()
 
-    def save_model(self, dir):
+    def save_model(self, dir, episode, t):
         """
         save the model to the specified dir
         """
 
-        print("saving model to", dir)
-        torch.save(self.policy_network, dir)
-        print("model save to", dir)
-        print("load it using torch.load()")
+        torch.save({
+            'episode': episode,
+            't': t,
+            'model_state_dict': self.policy_network.state_dict(),
+            'optimizer_state_dict': self.optimiser.state_dict(),
+            'storage': self.memory._storage,
+            'next_idx': self.memory._next_idx,
+            }, dir)
 
     def load_model(self, dir):
         """
         load the policy network from the specified dir
         """
-
-        print("loading model from", dir)
-        self.policy_network = torch.load(dir, map_location=device)
-        print("model loaded from", dir)
+        return torch.load(dir)
