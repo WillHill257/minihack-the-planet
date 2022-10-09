@@ -1,4 +1,4 @@
-models/
+models/*
 .vscode
 code
 *__pycache__*
