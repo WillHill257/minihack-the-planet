@@ -2,3 +2,4 @@ models/
 .vscode
 code
 *__pycache__*
+wandb

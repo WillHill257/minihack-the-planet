@@ -3,12 +3,13 @@ import minihack
 from nle import nethack
 from DQN.agent import DQNAgent
 from DQN.replay_buffer import ReplayBuffer
-from DQN.wrappers import PyTorchFrame
+from DQN.wrappers import StateSpaceFrame, FrameStack
 import random
 import numpy as np
 import os
 from natsort import natsorted
 import time
+import timeit
 
 hyper_params = {
     "seed": 42,  # which seed to use
@@ -50,11 +51,16 @@ ALL_ACTIONS = MOVE_ACTIONS
 
 replay_buffer = ReplayBuffer(hyper_params['replay-buffer-size'])
 
-env = gym.make(
-    hyper_params["env"],
-    observation_keys=["glyphs_crop"],
-    actions=ALL_ACTIONS,
-)
+env = gym.make(hyper_params["env"],
+               observation_keys=["glyphs_crop"],
+               actions=ALL_ACTIONS,
+               penalty_time=-0.005)
+
+env._max_episode_steps = 50
+
+env = StateSpaceFrame(env)
+
+env = FrameStack(env, 4)
 
 agent = DQNAgent(
     env.observation_space,
@@ -64,64 +70,53 @@ agent = DQNAgent(
     lr=hyper_params['learning-rate'],
     batch_size=hyper_params['batch-size'],
     gamma=hyper_params['discount-factor'],
+    # device='cpu',
 )
 
 
 # actions[50] == PRAY
 state = env.reset() # each reset generates a new environment instance
-state = state['glyphs_crop']
-
-t = 0
-num_episodes = 0
-average_loss = 0
-num_actions = 1
-episode_rewards = [0.0]
-episode_loss = []
 
 #check if there is a saved model in ./models. If there is, load it and set the t variable to the number of steps it has trained for and the num_episodes to the number of episodes it has trained for
 try:
     # get the name of the latest model
     model_name = natsorted(os.listdir('./models'))[-1]
     # load the model
-
+    print("Loading model...")
     checkpoint = agent.load_model('./models/' + model_name)
     agent.policy_network.load_state_dict(checkpoint['model_state_dict'])
     agent.update_target_network()
     agent.optimiser.load_state_dict(checkpoint['optimizer_state_dict'])
-    num_episodes = checkpoint['episode']
-    t = checkpoint['t']
 
     agent.memory._storage = checkpoint['storage']
     agent.memory._next_idx = checkpoint['next_idx']
-
-    print(f'Loaded model from step {t} and episode {num_episodes}')
 except:
-    print('No saved model to load. Starting new training run.')
-    agent = DQNAgent(
-        env.observation_space,
-        env.action_space,
-        replay_buffer,
-        use_double_dqn=hyper_params['use-double-dqn'],
-        lr=hyper_params['learning-rate'],
-        batch_size=hyper_params['batch-size'],
-        gamma=hyper_params['discount-factor'],
-    )
-    t = 0
-    num_episodes = 0
-    pass
+    print('No saved model to load')
+    exit()
 
-done = False
-while not done:
-    action = agent.act(np.array(state))
+start_time = timeit.default_timer()
+steps = 0
+mean_reward = 0.0
+
+while True:
+    action = agent.act(np.array(state).reshape(4, 9,9))
 
     next_state, reward, done, info = env.step(action)
-    next_state = next_state['glyphs_crop']
-
 
     # update the state for the next iteration
     state = next_state
 
+    steps += 1
+    mean_reward += (reward - mean_reward) / steps
+
     if done:
+        time_delta = timeit.default_timer() - start_time
+        print("Final reward:", reward)
+        print("End status:", info["end_status"].name)
+        print("Mean reward:", mean_reward)
+
+        sps = steps / time_delta
+        print(f"Steps: {steps}. SPS: {sps}")
         break
 
     env.render()

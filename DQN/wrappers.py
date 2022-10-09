@@ -175,9 +175,9 @@ class FrameStack(gym.Wrapper):
         gym.Wrapper.__init__(self, env)
         self.k = k
         self.frames = deque([], maxlen=k)
-        shp = env.observation_space.shape
+        shp = env.observation_space['glyphs_crop'].shape
         self.observation_space = spaces.Box(
-            low=0, high=255, shape=(shp[0] * k, shp[1], shp[2]), dtype=np.uint8
+            low=0, high=5991, shape=(1 * k, shp[0], shp[1]), dtype=np.uint8
         )
 
     def reset(self):
@@ -195,6 +195,15 @@ class FrameStack(gym.Wrapper):
         assert len(self.frames) == self.k
         return LazyFrames(list(self.frames))
 
+class StateSpaceFrame(gym.ObservationWrapper):
+    def __init__(self, env):
+        gym.ObservationWrapper.__init__(self, env)
+
+    def observation(self, observation):
+        # careful! This undoes the memory optimization, use
+        # with smaller replay buffers only.
+        return observation['glyphs_crop']
+
 
 class ScaledFloatFrame(gym.ObservationWrapper):
     def __init__(self, env):
@@ -203,7 +212,7 @@ class ScaledFloatFrame(gym.ObservationWrapper):
     def observation(self, observation):
         # careful! This undoes the memory optimization, use
         # with smaller replay buffers only.
-        return np.array(observation).astype(np.float32) / 255.0
+        return np.array(observation).astype(np.float32) / 5991.0
 
 
 class LazyFrames(object):

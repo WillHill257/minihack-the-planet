@@ -8,7 +8,6 @@ import torch.nn.functional as F
 
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-print("device:", device)
 
 
 class DQNAgent:
@@ -21,6 +20,7 @@ class DQNAgent:
         lr,
         batch_size,
         gamma,
+        device=device,
     ):
         """
         Initialise the DQN algorithm using the Adam optimiser
@@ -37,14 +37,17 @@ class DQNAgent:
         self.batch_size = batch_size
         self.use_double_dqn = use_double_dqn
         self.gamma = gamma
-        self.policy_network = DQN(observation_space, action_space).to(device)
-        self.target_network = DQN(observation_space, action_space).to(device)
+        self.device = device
+        self.policy_network = DQN(observation_space, action_space).to(self.device)
+        self.target_network = DQN(observation_space, action_space).to(self.device)
         self.update_target_network()  # the two networks are randomly initialised -> this ensures we start from a consistent view
         self.target_network.eval()  # we always want the target network in eval mode because we never train on it, only use to get the target values
         # use an ADAM optimiser
         self.optimiser = torch.optim.Adam(
             self.policy_network.parameters(), lr=lr
         )  # bind the optimiser to the policy network's parameters
+
+        print(f'device: {self.device}')
 
     def optimise_td_loss(self):
         """
@@ -57,15 +60,15 @@ class DQNAgent:
         )
 
         # normalise the pixel values to [0, 1]
-        states = np.array(states) / 5991.0
-        next_states = np.array(next_states) / 5991.0
+        states = np.array(states).reshape(-1, 4, 9,9) / 5991.0
+        next_states = np.array(next_states).reshape(-1,4, 9,9) / 5991.0
 
         # create tensors from the numpy arrays for use with pytorch
-        states = torch.from_numpy(states).float().unsqueeze(1).to(device)
-        actions = torch.from_numpy(actions).long().to(device)
-        rewards = torch.from_numpy(rewards).float().to(device)
-        next_states = torch.from_numpy(next_states).float().unsqueeze(1).to(device)
-        dones = torch.from_numpy(dones).float().to(device)
+        states = torch.from_numpy(states).float().to(self.device)
+        actions = torch.from_numpy(actions).long().to(self.device)
+        rewards = torch.from_numpy(rewards).float().to(self.device)
+        next_states = torch.from_numpy(next_states).float().to(self.device)
+        dones = torch.from_numpy(dones).float().to(self.device)
 
         # get the output values from the target network
         # no grad since we do not want to do the update yet
@@ -126,7 +129,7 @@ class DQNAgent:
         :return: the action to take
         """
         state = np.array(state) / 5991.0
-        state = torch.from_numpy(state).float().unsqueeze(0).unsqueeze(0).to(device)
+        state = torch.from_numpy(state).float().unsqueeze(0).to(self.device)
 
         # do not accumulate gradients here, since we are simply evaluating, and not training
         with torch.no_grad():
