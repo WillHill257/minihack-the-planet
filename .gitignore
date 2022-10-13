@@ -1,6 +1,7 @@
-models/*
+*/models/*
 .vscode
 code
 *__pycache__*
 wandb
 logs/
+*.pth

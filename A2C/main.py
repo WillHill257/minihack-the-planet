@@ -10,7 +10,7 @@ from multiprocessing_env import SubprocVecEnv, VecPyTorch, VecPyTorchFrameStack
 from wrappers import *
 import torch
 import torch.optim as optim
-
+import random
 import minihack
 from nle import nethack
 
@@ -31,12 +31,12 @@ def parse_args():
     parser.add_argument("--eps", type=float, default=1e-5, help="eps term for the RMSprop optimizer")  # instead of 1e-3 due to different RMSprop implementation in PyTorch than Tensorflow
     parser.add_argument("--max-grad-norm", type=float, default=0.5, help="maximum norm of gradients")
     parser.add_argument("--num_steps", type=int, default=5, help="number of forward steps")
-    parser.add_argument("--num-envs", type=int, default=1, help="number of processes for environments")
+    parser.add_argument("--num-envs", type=int, default=12, help="number of processes for environments")
     parser.add_argument("--gamma", type=float, default=0.99, help="discount factor")
     parser.add_argument("--num-frames", type=int, default=int(10e6),
                         help="total number of steps to run the environment for")
     parser.add_argument("--log-dir", type=str, default="logs", help="where to save log files")
-    parser.add_argument("--save-freq", type=int, default=0, help="updates between saving models (default 0 => no save)")
+    parser.add_argument("--save-freq", type=int, default=10000, help="updates between saving models (default 0 => no save)")
     # Reporting
     parser.add_argument("--print-freq", type=int, default=1000, help="evaluation frequency.")
     return parser.parse_args()
@@ -58,7 +58,7 @@ def make_env(seed, rank):
                penalty_time=-0.005,
                penalty_step=-0.1)
         env._max_episode_steps = 30
-        env.seed(seed + rank)
+        # env.seed(seed + rank)
         env = StateSpaceFrame(env)
         env = ChannelWrapper(env)
 
@@ -88,9 +88,9 @@ if __name__ == '__main__':
 
     ALL_ACTIONS = tuple(nethack.CompassDirection)
 
-    torch.manual_seed(args.seed)
-    torch.cuda.manual_seed_all(args.seed)
-    np.random.seed(args.seed)
+    # torch.manual_seed(args.seed)
+    # torch.cuda.manual_seed_all(args.seed)
+    # np.random.seed(args.seed)
 
     envs = make_envs()
 
@@ -114,8 +114,13 @@ if __name__ == '__main__':
 
         for step in range(args.num_steps):
             observation = observation.to(device) / 5991.0
-            actor, value = actor_critic(observation)
 
+            actor, value = actor_critic(observation)
+            # sample = random.random()
+            # if sample <= 0.1:
+            #     action = torch.randint(0, envs.action_space.n, (envs.num_envs,)).to(device)
+            # else:
+            #     action = actor.sample()
             action = actor.sample()
             next_observation, reward, done, infos = envs.step(action.unsqueeze(1))
 
@@ -171,4 +176,4 @@ if __name__ == '__main__':
             print("actor loss: {:.5f}, critic loss: {:.5f}, entropy: {:.5f}".format(actor_loss.item(), critic_loss.item(), entropy_loss.item()))
             print("********************************************************")
         if args.save_freq > 0 and update % args.save_freq == 0:
-            torch.save(actor_critic.state_dict(), './{}-{}.pth'.format(args.env, update))
+            torch.save(actor_critic.state_dict(), 'A2C/models/{}-{}.pth'.format(args.env, update))
