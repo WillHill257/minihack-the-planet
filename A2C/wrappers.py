@@ -181,6 +181,20 @@ class FrameStack(gym.Wrapper):
         assert len(self.frames) == self.k
         return LazyFrames(list(self.frames))
 
+class PyTorchFrame(gym.ObservationWrapper):
+    """Image shape to num_channels x height x width"""
+
+    def __init__(self, env):
+        super(PyTorchFrame, self).__init__(env)
+        shape = self.observation_space.shape
+        # glyphs_crop: Box(0, 5976, (9,9))
+        self.observation_space = gym.spaces.Box(
+            low=0.0, high=1.0, shape=(shape[-1], shape[0], shape[1]), dtype=np.uint8
+        )
+
+    def observation(self, observation):
+        return np.rollaxis(observation, 2)
+
 
 class ScaledFloatFrame(gym.ObservationWrapper):
     def __init__(self, env):
@@ -191,6 +205,34 @@ class ScaledFloatFrame(gym.ObservationWrapper):
         # with smaller replay buffers only.
         return np.array(observation).astype(np.float32) / 255.0
 
+class FrameStack(gym.Wrapper):
+    def __init__(self, env, k):
+        """Stack k last frames.
+        Returns lazy array, which is much more memory efficient.
+        Expects inputs to be of shape num_channels x height x width.
+        """
+        gym.Wrapper.__init__(self, env)
+        self.k = k
+        self.frames = deque([], maxlen=k)
+        shp = env.observation_space['glyphs_crop'].shape
+        self.observation_space = spaces.Box(
+            low=0, high=5991, shape=(1 * k, shp[0], shp[1]), dtype=np.uint8
+        )
+
+    def reset(self):
+        ob = self.env.reset()
+        for _ in range(self.k):
+            self.frames.append(ob)
+        return self._get_ob()
+
+    def step(self, action):
+        ob, reward, done, info = self.env.step(action)
+        self.frames.append(ob)
+        return self._get_ob(), reward, done, info
+
+    def _get_ob(self):
+        assert len(self.frames) == self.k
+        return LazyFrames(list(self.frames))
 
 class LazyFrames(object):
     def __init__(self, frames):
