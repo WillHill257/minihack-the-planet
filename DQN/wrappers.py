@@ -175,7 +175,7 @@ class FrameStack(gym.Wrapper):
         gym.Wrapper.__init__(self, env)
         self.k = k
         self.frames = deque([], maxlen=k)
-        shp = env.observation_space['glyphs_crop'].shape
+        shp = env.observation_space['glyphs'].shape
         self.observation_space = spaces.Box(
             low=0, high=5991, shape=(1 * k, shp[0], shp[1]), dtype=np.uint8
         )
@@ -202,7 +202,7 @@ class StateSpaceFrame(gym.ObservationWrapper):
     def observation(self, observation):
         # careful! This undoes the memory optimization, use
         # with smaller replay buffers only.
-        return observation['glyphs_crop']
+        return observation['glyphs']
 
 
 class ScaledFloatFrame(gym.ObservationWrapper):
@@ -241,7 +241,7 @@ class PyTorchFrame(gym.ObservationWrapper):
     def __init__(self, env):
         super(PyTorchFrame, self).__init__(env)
         shape = self.observation_space.shape
-        # glyphs_crop: Box(0, 5976, (9,9))
+        # glyphs: Box(0, 5976, (21,79))
         self.observation_space = gym.spaces.Box(
             low=0.0, high=1.0, shape=(shape[-1], shape[0], shape[1]), dtype=np.uint8
         )

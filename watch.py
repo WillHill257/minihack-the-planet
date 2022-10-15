@@ -10,27 +10,29 @@ import os
 from natsort import natsorted
 import time
 import timeit
+import hashlib
 
 hyper_params = {
     "seed": 42,  # which seed to use
-    "env": "MiniHack-ExploreMaze-Easy-v0",  # name of the game
-    "replay-buffer-size": int(5e3),  # replay buffer size
+    "env": "MiniHack-ExploreMaze-Easy-Mapped-v0",  # name of the game
+    "replay-buffer-size": int(1e6),  # replay buffer size
     "learning-rate": 1e-4,  # learning rate for Adam optimizer
     "discount-factor": 0.99,  # discount factor
     "num-steps": int(1e6),  # total number of steps to run the environment for
-    "num-episodes": 1000,  # total number of episodes to run the environment for
-    "batch-size": 256,  # number of transitions to optimize at the same time
+    "num-episodes":
+    100000,  # total number of episodes to run the environment for
+    "batch-size": 32,  # number of transitions to optimize at the same time
     "learning-starts": 10000,  # number of steps before learning starts
-    "learning-freq": 1,  # number of iterations between every optimization step
+    "learning-freq": 4,  # number of iterations between every optimization step
     "use-double-dqn": True,  # use double deep Q-learning
-    "target-update-freq": 100,  # number of iterations between every target network update
+    "target-update-freq":
+    10000,  # number of iterations between every target network update
     "eps-start": 1.0,  # e-greedy start threshold
-    "eps-end": 0.01,  # e-greedy end threshold
+    "eps-end": 0.02,  # e-greedy end threshold
     "eps-fraction": 0.1,  # fraction of num-steps over which to decay epsilon
-    "print-freq": 20,
-    "save-freq": 10,
+    "print-freq": 100,
+    "save-freq": 1000,
 }
-
 
 
 MOVE_ACTIONS = tuple(nethack.CompassDirection) # h,j,k,l,y,u,b,n
@@ -51,16 +53,62 @@ ALL_ACTIONS = MOVE_ACTIONS
 
 replay_buffer = ReplayBuffer(hyper_params['replay-buffer-size'])
 
-env = gym.make(hyper_params["env"],
-               observation_keys=["glyphs_crop"],
-               actions=ALL_ACTIONS,
-               penalty_time=-0.005)
+explored = {}
+
+def bad_actions(env, prev, act, curr):
+    if act > 7:
+        return -1
+    return 0
+
+
+def hash_pair(point):
+    # Cantors pairing function
+    x, y = point
+    return (x**2 + 3 * x + 2 * x * y + y + y**2) / 2
+
+
+def move_right(env, prev, act, curr):
+    player_loc = np.squeeze(np.where(curr[1] == 64))
+    if player_loc.size != 2:
+        return 0
+    return 0.001 * player_loc[1]
+
+
+def count_based(env, prev, act, curr):
+    # b = curr[0].view(np.uint8)
+    # hash = hashlib.sha1(b).hexdigest()
+    player_loc = np.squeeze(np.where(curr[1] == 64))
+    if player_loc.size != 2:
+        return 0
+
+    hash = hash_pair(tuple(player_loc))
+    if hash not in explored:
+        explored[hash] = 0
+    explored[hash] += 1
+    return 0.01 / explored[hash]
+
+
+def new_states(env, prev, act, curr):
+
+    if (prev[1] == 32).sum() > (curr[1] == 32).sum():
+        return 0.1
+
+    return 0
+
+env = gym.make(
+    hyper_params["env"],
+    observation_keys=["glyphs",'glyphs_crop'],
+    #    actions=ALL_ACTIONS,
+    penalty_time=-0.001,
+    penalty_step=-0.1)
+
+env.reward_manager.add_custom_reward_fn(bad_actions)
+env.reward_manager.add_custom_reward_fn(count_based)
+env.reward_manager.add_custom_reward_fn(new_states)
+env.reward_manager.add_custom_reward_fn(move_right)
 
 env._max_episode_steps = 50
 
-env = StateSpaceFrame(env)
-
-env = FrameStack(env, 4)
 
 agent = DQNAgent(
     env.observation_space,
@@ -96,10 +144,11 @@ except:
 
 start_time = timeit.default_timer()
 steps = 0
-mean_reward = 0.0
+total_reward = 0
+
 
 while True:
-    action = agent.act(np.array(state).reshape(4, 9,9))
+    action = agent.act(state)
 
     next_state, reward, done, info = env.step(action)
 
@@ -107,13 +156,19 @@ while True:
     state = next_state
 
     steps += 1
-    mean_reward += (reward - mean_reward) / steps
+    total_reward += reward
+
+    print(f'Action: {action}, Reward: {reward:.5f}')
+    # convert torch tensor q_values to normal python list and put it on the cpu
+    q_values = np.squeeze(agent.q_values.detach().cpu().numpy()).tolist()
+    print(np.round(q_values, 5))
 
     if done:
         time_delta = timeit.default_timer() - start_time
         print("Final reward:", reward)
         print("End status:", info["end_status"].name)
-        print("Mean reward:", mean_reward)
+        print("Total reward:", total_reward)
+        print("Mean reward:", total_reward/steps)
 
         sps = steps / time_delta
         print(f"Steps: {steps}. SPS: {sps}")
