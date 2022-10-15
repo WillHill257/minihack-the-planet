@@ -87,14 +87,14 @@ class DQN(nn.Module):
         B = 79
 
         lstm_output_list = []
-        notdone = (~done).float()
+        notdone = (1-done).float()
         for input, nd in zip(x.unbind(), notdone.unbind()):
             # Reset lstm state to zero whenever an episode ended.
             # Make `done` broadcastable with (num_layers, B, hidden_size)
             # states:
             nd = nd.view(1, -1, 1)
             lstm_state = tuple(nd * s for s in self.lstm_state)
-            output, self.lstm_state = self.lstm(input.unsqueeze(0), lstm_state)
+            output, self.lstm_state = self.lstm(input.unsqueeze(0).unsqueeze(0), lstm_state)
             lstm_output_list.append(output)
         lstm_output = torch.flatten(torch.cat(lstm_output_list), 0, 1)
 

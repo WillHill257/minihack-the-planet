@@ -14,8 +14,8 @@ import wandb
 from collections import deque
 
 # 1. Start a new run
-# wandb.init(project="dqn")
-wandb.init(project="dqn", mode="disabled")
+wandb.init(project="dqn")
+# wandb.init(project="dqn", mode="disabled")
 
 hyper_params = {
     "seed": 42,  # which seed to use

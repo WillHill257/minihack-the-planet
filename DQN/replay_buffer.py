@@ -67,8 +67,17 @@ class ReplayBuffer:
         :param batch_size: the number of transitions to sample
         :return: a mini-batch of sampled transitions
         """
-        # randomly sample batch_size indices from the buffer (within the bounds of the buffer size)
-        indices = np.random.randint(0, len(self._storage) - 1, size=batch_size)
-
+        
+        # random sequence
+        index = np.random.randint(self._next_idx, self._next_idx+len(self._storage)-batch_size)
+        indices = np.arange(index, index + batch_size)
+        indices = indices % len(self._storage)
         # get those indices and return them
         return self._encode_sample(indices)
+        
+        # random indices
+        # # randomly sample batch_size indices from the buffer (within the bounds of the buffer size)
+        # indices = np.random.randint(0, len(self._storage) - 1, size=batch_size)
+
+        # # get those indices and return them
+        # return self._encode_sample(indices)

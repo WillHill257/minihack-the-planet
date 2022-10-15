@@ -4,3 +4,4 @@ code
 *__pycache__*
 wandb
 */*.pth
+venv

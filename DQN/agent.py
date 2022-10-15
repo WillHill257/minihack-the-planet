@@ -73,7 +73,7 @@ class DQNAgent:
         actions = torch.from_numpy(actions).long().to(self.device)
         rewards = torch.from_numpy(rewards).float().to(self.device)
         # next_states = torch.from_numpy(next_states).float().to(self.device)
-        dones = torch.from_numpy(dones).float().to(self.device)
+        dones = torch.from_numpy(dones).int().to(self.device)
 
         # get the output values from the target network
         # no grad since we do not want to do the update yet
@@ -138,8 +138,9 @@ class DQNAgent:
         # do not accumulate gradients here, since we are simply evaluating, and not training
         with torch.no_grad():
             # greedily choose the best action
-            done = torch.tensor([0.0]).to(self.device)
+            done = torch.tensor([0]).to(self.device)
             self.q_values = self.policy_network(state,done)
+            # self.q_values = self.policy_network(state)
             _, action = self.q_values.max(1)
             return action.item()
 
