@@ -14,8 +14,8 @@ import wandb
 from collections import deque
 
 # 1. Start a new run
-wandb.init(project="dqn")
-# wandb.init(project="dqn", mode="disabled")
+# wandb.init(project="dqn")
+wandb.init(project="dqn", mode="disabled")
 
 hyper_params = {
     "seed": 42,  # which seed to use
@@ -181,6 +181,8 @@ wandb.watch(agent.policy_network)
 
 idle_count = 0
 
+# create the initial model lstm state
+
 while t < hyper_params['num-steps'] and num_episodes < hyper_params[
         'num-episodes']:
 
@@ -235,6 +237,8 @@ while t < hyper_params['num-steps'] and num_episodes < hyper_params[
         num_episodes += 1
         episode_novel.append(len(explored))
         explored = {}
+
+        agent.policy_network.initial_state()
 
     # governs how often we update the weights of our network (e.g. via backprop)
     if (t > hyper_params['learning-starts']

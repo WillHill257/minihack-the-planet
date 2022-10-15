@@ -39,7 +39,18 @@ class DQN(nn.Module):
 
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    def forward(self, x):
+        self.lstm = nn.LSTM(512, 512, num_layers=1)
+        self.lstm_state = None
+        self.initial_state()
+
+
+    def initial_state(self, batch_size=1):
+        self.lstm_state = tuple(
+            torch.zeros(self.lstm.num_layers, batch_size, self.lstm.hidden_size).to(self.device)
+            for _ in range(2)
+        )
+
+    def forward(self, x, done):
         # forward pass, using relu activations
         glyphs = torch.from_numpy(np.stack([s['glyphs'] for s in x])).float().unsqueeze(1).to(
                 self.device) / 5991.0
@@ -70,5 +81,23 @@ class DQN(nn.Module):
         # 2 fully-connected layers
         x = F.relu(self.linear1(x))
         x = F.relu(self.linear2(x))
-        x = self.linear3(x)  # no activation on the output layer
-        return x
+        
+
+        T = 21
+        B = 79
+
+        lstm_output_list = []
+        notdone = (~done).float()
+        for input, nd in zip(x.unbind(), notdone.unbind()):
+            # Reset lstm state to zero whenever an episode ended.
+            # Make `done` broadcastable with (num_layers, B, hidden_size)
+            # states:
+            nd = nd.view(1, -1, 1)
+            lstm_state = tuple(nd * s for s in self.lstm_state)
+            output, self.lstm_state = self.lstm(input.unsqueeze(0), lstm_state)
+            lstm_output_list.append(output)
+        lstm_output = torch.flatten(torch.cat(lstm_output_list), 0, 1)
+
+        lstm_output = self.linear3(lstm_output)  # no activation on the output layer
+
+        return lstm_output
