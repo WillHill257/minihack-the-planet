@@ -73,21 +73,22 @@ class DQNAgent:
         actions = torch.from_numpy(actions).long().to(self.device)
         rewards = torch.from_numpy(rewards).float().to(self.device)
         # next_states = torch.from_numpy(next_states).float().to(self.device)
-        dones = torch.from_numpy(dones).float().to(self.device)
+        dones = torch.from_numpy(dones).int().to(self.device)
 
         # get the output values from the target network
         # no grad since we do not want to do the update yet
         with torch.no_grad():
             if self.use_double_dqn:
                 # get the best action from the policy network. max(1) since we greedily choose the action
-                _, max_next_action = self.policy_network(next_states).max(1)
+
+                _, max_next_action = self.policy_network(next_states, dones).max(1)
 
                 # get the value of the corresponding action from the target network
-                max_next_q_values = (self.target_network(next_states).gather(
+                max_next_q_values = (self.target_network(next_states, dones).gather(
                     1, max_next_action.unsqueeze(1)).squeeze())
             else:
                 # if don't use a "target" network, just use all the values from the "current" network
-                next_q_values = self.target_network(next_states)
+                next_q_values = self.target_network(next_states, dones)
                 max_next_q_values, _ = next_q_values.max(1)
 
             # compute the target values using the actions decided on above (i.e. td-target)
@@ -95,7 +96,7 @@ class DQNAgent:
                 1 - dones) * self.gamma * max_next_q_values
 
         # compute the values of the output nodes of the network
-        input_q_values = self.policy_network(states)
+        input_q_values = self.policy_network(states, dones)
 
         # only take the q-values corresponding to the nodes of the actions we took
         input_q_values = input_q_values.gather(1,
@@ -137,7 +138,9 @@ class DQNAgent:
         # do not accumulate gradients here, since we are simply evaluating, and not training
         with torch.no_grad():
             # greedily choose the best action
-            self.q_values = self.policy_network(state)
+            done = torch.tensor([0]).to(self.device)
+            self.q_values = self.policy_network(state,done)
+            # self.q_values = self.policy_network(state)
             _, action = self.q_values.max(1)
             return action.item()
 
