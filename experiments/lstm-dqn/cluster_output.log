@@ -1,0 +1,3963 @@
+device: cuda
+No saved model to load. Starting new training run.
+device: cuda
+********************************************************
+steps: 362
+episodes: 100
+mean 100 episode reward: -1.1478
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.768
+% time spent exploring: 99
+********************************************************
+********************************************************
+steps: 707
+episodes: 200
+mean 100 episode reward: -1.2895
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.737
+% time spent exploring: 99
+********************************************************
+********************************************************
+steps: 1085
+episodes: 300
+mean 100 episode reward: -1.2894
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.879
+% time spent exploring: 99
+********************************************************
+********************************************************
+steps: 1428
+episodes: 400
+mean 100 episode reward: -1.2282
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.596
+% time spent exploring: 98
+********************************************************
+********************************************************
+steps: 1771
+episodes: 500
+mean 100 episode reward: -1.2093
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.626
+% time spent exploring: 98
+********************************************************
+********************************************************
+steps: 2097
+episodes: 600
+mean 100 episode reward: -1.2591
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.556
+% time spent exploring: 98
+********************************************************
+********************************************************
+steps: 2444
+episodes: 700
+mean 100 episode reward: -1.158
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.646
+% time spent exploring: 97
+********************************************************
+********************************************************
+steps: 2824
+episodes: 800
+mean 100 episode reward: -1.2093
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.838
+% time spent exploring: 97
+********************************************************
+********************************************************
+steps: 3144
+episodes: 900
+mean 100 episode reward: -1.2381
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.495
+% time spent exploring: 97
+********************************************************
+********************************************************
+steps: 3502
+episodes: 1000
+mean 100 episode reward: -1.269
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.717
+% time spent exploring: 96
+********************************************************
+********************************************************
+steps: 3860
+episodes: 1100
+mean 100 episode reward: -1.2186
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.687
+% time spent exploring: 96
+********************************************************
+********************************************************
+steps: 4219
+episodes: 1200
+mean 100 episode reward: -1.2493
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.646
+% time spent exploring: 96
+********************************************************
+********************************************************
+steps: 4576
+episodes: 1300
+mean 100 episode reward: -1.2808
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.697
+% time spent exploring: 95
+********************************************************
+********************************************************
+steps: 4887
+episodes: 1400
+mean 100 episode reward: -1.28
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.495
+% time spent exploring: 95
+********************************************************
+********************************************************
+steps: 5228
+episodes: 1500
+mean 100 episode reward: -1.3097
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.657
+% time spent exploring: 95
+********************************************************
+********************************************************
+steps: 5523
+episodes: 1600
+mean 100 episode reward: -1.1468
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.404
+% time spent exploring: 95
+********************************************************
+********************************************************
+steps: 5863
+episodes: 1700
+mean 100 episode reward: -1.2589
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.606
+% time spent exploring: 94
+********************************************************
+********************************************************
+steps: 6154
+episodes: 1800
+mean 100 episode reward: -1.1684
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.354
+% time spent exploring: 94
+********************************************************
+********************************************************
+steps: 6442
+episodes: 1900
+mean 100 episode reward: -1.1572
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.384
+% time spent exploring: 94
+********************************************************
+********************************************************
+steps: 6778
+episodes: 2000
+mean 100 episode reward: -1.168
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.596
+% time spent exploring: 93
+********************************************************
+********************************************************
+steps: 7069
+episodes: 2100
+mean 100 episode reward: -1.1785
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.394
+% time spent exploring: 93
+********************************************************
+********************************************************
+steps: 7430
+episodes: 2200
+mean 100 episode reward: -1.2399
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.788
+% time spent exploring: 93
+********************************************************
+********************************************************
+steps: 7742
+episodes: 2300
+mean 100 episode reward: -1.1179
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.515
+% time spent exploring: 93
+********************************************************
+********************************************************
+steps: 8057
+episodes: 2400
+mean 100 episode reward: -1.2893
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.485
+% time spent exploring: 92
+********************************************************
+********************************************************
+steps: 8393
+episodes: 2500
+mean 100 episode reward: -1.37
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.566
+% time spent exploring: 92
+********************************************************
+********************************************************
+steps: 8712
+episodes: 2600
+mean 100 episode reward: -1.3002
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.545
+% time spent exploring: 92
+********************************************************
+********************************************************
+steps: 9051
+episodes: 2700
+mean 100 episode reward: -1.2495
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.707
+% time spent exploring: 91
+********************************************************
+********************************************************
+steps: 9373
+episodes: 2800
+mean 100 episode reward: -1.3101
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.566
+% time spent exploring: 91
+********************************************************
+********************************************************
+steps: 9709
+episodes: 2900
+mean 100 episode reward: -1.1794
+mean 100 episode loss: 0.0
+mean 100 novel states: 1.596
+% time spent exploring: 91
+********************************************************
+********************************************************
+steps: 10032
+episodes: 3000
+mean 100 episode reward: -1.0674
+mean 100 episode loss: 0.00910464
+mean 100 novel states: 1.646
+% time spent exploring: 90
+********************************************************
+********************************************************
+steps: 10390
+episodes: 3100
+mean 100 episode reward: -1.137
+mean 100 episode loss: 0.00153404
+mean 100 novel states: 1.758
+% time spent exploring: 90
+********************************************************
+********************************************************
+steps: 10772
+episodes: 3200
+mean 100 episode reward: -1.1979
+mean 100 episode loss: 0.00038363
+mean 100 novel states: 1.717
+% time spent exploring: 90
+********************************************************
+********************************************************
+steps: 11095
+episodes: 3300
+mean 100 episode reward: -1.0773
+mean 100 episode loss: 0.00027954
+mean 100 novel states: 1.626
+% time spent exploring: 90
+********************************************************
+********************************************************
+steps: 11465
+episodes: 3400
+mean 100 episode reward: -1.2391
+mean 100 episode loss: 0.00025438
+mean 100 novel states: 1.758
+% time spent exploring: 89
+********************************************************
+********************************************************
+steps: 11855
+episodes: 3500
+mean 100 episode reward: -1.1688
+mean 100 episode loss: 0.00024453
+mean 100 novel states: 1.96
+% time spent exploring: 89
+********************************************************
+********************************************************
+steps: 12225
+episodes: 3600
+mean 100 episode reward: -0.9873
+mean 100 episode loss: 0.00023666
+mean 100 novel states: 1.808
+% time spent exploring: 88
+********************************************************
+********************************************************
+steps: 12620
+episodes: 3700
+mean 100 episode reward: -1.1376
+mean 100 episode loss: 0.00023081
+mean 100 novel states: 1.97
+% time spent exploring: 88
+********************************************************
+********************************************************
+steps: 12984
+episodes: 3800
+mean 100 episode reward: -1.0581
+mean 100 episode loss: 0.00027645
+mean 100 novel states: 1.677
+% time spent exploring: 88
+********************************************************
+********************************************************
+steps: 13373
+episodes: 3900
+mean 100 episode reward: -1.1172
+mean 100 episode loss: 0.00027243
+mean 100 novel states: 1.869
+% time spent exploring: 87
+********************************************************
+********************************************************
+steps: 13704
+episodes: 4000
+mean 100 episode reward: -1.0661
+mean 100 episode loss: 0.00027868
+mean 100 novel states: 1.556
+% time spent exploring: 87
+********************************************************
+********************************************************
+steps: 14125
+episodes: 4100
+mean 100 episode reward: -1.119
+mean 100 episode loss: 0.00022764
+mean 100 novel states: 2.061
+% time spent exploring: 87
+********************************************************
+********************************************************
+steps: 14517
+episodes: 4200
+mean 100 episode reward: -1.0772
+mean 100 episode loss: 0.00023888
+mean 100 novel states: 2.0
+% time spent exploring: 86
+********************************************************
+********************************************************
+steps: 14910
+episodes: 4300
+mean 100 episode reward: -1.2595
+mean 100 episode loss: 0.00024955
+mean 100 novel states: 1.869
+% time spent exploring: 86
+********************************************************
+********************************************************
+steps: 15268
+episodes: 4400
+mean 100 episode reward: -1.047
+mean 100 episode loss: 0.00022979
+mean 100 novel states: 1.768
+% time spent exploring: 86
+********************************************************
+********************************************************
+steps: 15683
+episodes: 4500
+mean 100 episode reward: -1.0889
+mean 100 episode loss: 0.00021231
+mean 100 novel states: 1.98
+% time spent exploring: 85
+********************************************************
+********************************************************
+steps: 16050
+episodes: 4600
+mean 100 episode reward: -0.9969
+mean 100 episode loss: 0.00014623
+mean 100 novel states: 1.758
+% time spent exploring: 85
+********************************************************
+********************************************************
+steps: 16407
+episodes: 4700
+mean 100 episode reward: -0.9167
+mean 100 episode loss: 0.00020037
+mean 100 novel states: 1.667
+% time spent exploring: 85
+********************************************************
+********************************************************
+steps: 16736
+episodes: 4800
+mean 100 episode reward: -0.8747
+mean 100 episode loss: 0.00020728
+mean 100 novel states: 1.636
+% time spent exploring: 84
+********************************************************
+********************************************************
+steps: 17113
+episodes: 4900
+mean 100 episode reward: -1.1084
+mean 100 episode loss: 0.0001971
+mean 100 novel states: 1.687
+% time spent exploring: 84
+********************************************************
+********************************************************
+steps: 17521
+episodes: 5000
+mean 100 episode reward: -1.1892
+mean 100 episode loss: 0.00020114
+mean 100 novel states: 1.96
+% time spent exploring: 84
+********************************************************
+********************************************************
+steps: 17929
+episodes: 5100
+mean 100 episode reward: -1.0577
+mean 100 episode loss: 0.00016907
+mean 100 novel states: 1.929
+% time spent exploring: 83
+********************************************************
+********************************************************
+steps: 18321
+episodes: 5200
+mean 100 episode reward: -1.1476
+mean 100 episode loss: 0.00016181
+mean 100 novel states: 1.919
+% time spent exploring: 83
+********************************************************
+********************************************************
+steps: 18716
+episodes: 5300
+mean 100 episode reward: -1.0466
+mean 100 episode loss: 0.00017255
+mean 100 novel states: 1.98
+% time spent exploring: 83
+********************************************************
+********************************************************
+steps: 19137
+episodes: 5400
+mean 100 episode reward: -1.1283
+mean 100 episode loss: 0.00016363
+mean 100 novel states: 2.04
+% time spent exploring: 82
+********************************************************
+********************************************************
+steps: 19506
+episodes: 5500
+mean 100 episode reward: -1.0271
+mean 100 episode loss: 0.00013108
+mean 100 novel states: 1.848
+% time spent exploring: 82
+********************************************************
+********************************************************
+steps: 19903
+episodes: 5600
+mean 100 episode reward: -1.0976
+mean 100 episode loss: 0.00013559
+mean 100 novel states: 1.97
+% time spent exploring: 82
+********************************************************
+********************************************************
+steps: 20337
+episodes: 5700
+mean 100 episode reward: -1.3204
+mean 100 episode loss: 4.88e-05
+mean 100 novel states: 2.091
+% time spent exploring: 81
+********************************************************
+********************************************************
+steps: 20742
+episodes: 5800
+mean 100 episode reward: -1.1487
+mean 100 episode loss: 1.421e-05
+mean 100 novel states: 1.949
+% time spent exploring: 81
+********************************************************
+********************************************************
+steps: 21186
+episodes: 5900
+mean 100 episode reward: -1.1297
+mean 100 episode loss: 2.035e-05
+mean 100 novel states: 2.121
+% time spent exploring: 80
+********************************************************
+********************************************************
+steps: 21611
+episodes: 6000
+mean 100 episode reward: -1.1487
+mean 100 episode loss: 1.994e-05
+mean 100 novel states: 2.152
+% time spent exploring: 80
+********************************************************
+********************************************************
+steps: 21976
+episodes: 6100
+mean 100 episode reward: -1.1081
+mean 100 episode loss: 2.213e-05
+mean 100 novel states: 1.727
+% time spent exploring: 80
+********************************************************
+********************************************************
+steps: 22384
+episodes: 6200
+mean 100 episode reward: -1.0068
+mean 100 episode loss: 2.145e-05
+mean 100 novel states: 1.929
+% time spent exploring: 79
+********************************************************
+********************************************************
+steps: 22799
+episodes: 6300
+mean 100 episode reward: -1.139
+mean 100 episode loss: 2.843e-05
+mean 100 novel states: 2.0
+% time spent exploring: 79
+********************************************************
+********************************************************
+steps: 23284
+episodes: 6400
+mean 100 episode reward: -1.3304
+mean 100 episode loss: 2.763e-05
+mean 100 novel states: 2.343
+% time spent exploring: 79
+********************************************************
+********************************************************
+steps: 23682
+episodes: 6500
+mean 100 episode reward: -1.1069
+mean 100 episode loss: 2.421e-05
+mean 100 novel states: 1.949
+% time spent exploring: 78
+********************************************************
+********************************************************
+steps: 24126
+episodes: 6600
+mean 100 episode reward: -1.1386
+mean 100 episode loss: 2.731e-05
+mean 100 novel states: 2.212
+% time spent exploring: 78
+********************************************************
+********************************************************
+steps: 24582
+episodes: 6700
+mean 100 episode reward: -1.2283
+mean 100 episode loss: 2.971e-05
+mean 100 novel states: 2.141
+% time spent exploring: 77
+********************************************************
+********************************************************
+steps: 25035
+episodes: 6800
+mean 100 episode reward: -1.1005
+mean 100 episode loss: 2.858e-05
+mean 100 novel states: 2.182
+% time spent exploring: 77
+********************************************************
+********************************************************
+steps: 25409
+episodes: 6900
+mean 100 episode reward: -1.017
+mean 100 episode loss: 1.826e-05
+mean 100 novel states: 1.747
+% time spent exploring: 77
+********************************************************
+********************************************************
+steps: 25870
+episodes: 7000
+mean 100 episode reward: -1.3201
+mean 100 episode loss: 1.249e-05
+mean 100 novel states: 2.253
+% time spent exploring: 76
+********************************************************
+********************************************************
+steps: 26293
+episodes: 7100
+mean 100 episode reward: -1.0775
+mean 100 episode loss: 1.96e-05
+mean 100 novel states: 2.081
+% time spent exploring: 76
+********************************************************
+********************************************************
+steps: 26671
+episodes: 7200
+mean 100 episode reward: -1.0365
+mean 100 episode loss: 2.055e-05
+mean 100 novel states: 1.828
+% time spent exploring: 75
+********************************************************
+********************************************************
+steps: 27113
+episodes: 7300
+mean 100 episode reward: -1.0975
+mean 100 episode loss: 1.543e-05
+mean 100 novel states: 2.111
+% time spent exploring: 75
+********************************************************
+********************************************************
+steps: 27552
+episodes: 7400
+mean 100 episode reward: -1.1088
+mean 100 episode loss: 1.769e-05
+mean 100 novel states: 2.051
+% time spent exploring: 75
+********************************************************
+********************************************************
+steps: 28025
+episodes: 7500
+mean 100 episode reward: -1.0887
+mean 100 episode loss: 1.788e-05
+mean 100 novel states: 2.374
+% time spent exploring: 74
+********************************************************
+********************************************************
+steps: 28513
+episodes: 7600
+mean 100 episode reward: -1.1394
+mean 100 episode loss: 1.387e-05
+mean 100 novel states: 2.273
+% time spent exploring: 74
+********************************************************
+********************************************************
+steps: 28934
+episodes: 7700
+mean 100 episode reward: -1.1391
+mean 100 episode loss: 1.764e-05
+mean 100 novel states: 2.071
+% time spent exploring: 73
+********************************************************
+********************************************************
+steps: 29365
+episodes: 7800
+mean 100 episode reward: -1.1989
+mean 100 episode loss: 1.195e-05
+mean 100 novel states: 2.192
+% time spent exploring: 73
+********************************************************
+********************************************************
+steps: 29785
+episodes: 7900
+mean 100 episode reward: -0.9965
+mean 100 episode loss: 1.872e-05
+mean 100 novel states: 2.02
+% time spent exploring: 73
+********************************************************
+********************************************************
+steps: 30272
+episodes: 8000
+mean 100 episode reward: -1.1996
+mean 100 episode loss: 1.241e-05
+mean 100 novel states: 2.313
+% time spent exploring: 72
+********************************************************
+********************************************************
+steps: 30724
+episodes: 8100
+mean 100 episode reward: -1.1692
+mean 100 episode loss: 9.73e-06
+mean 100 novel states: 2.141
+% time spent exploring: 72
+********************************************************
+********************************************************
+steps: 31207
+episodes: 8200
+mean 100 episode reward: -1.1491
+mean 100 episode loss: 1.078e-05
+mean 100 novel states: 2.455
+% time spent exploring: 71
+********************************************************
+********************************************************
+steps: 31640
+episodes: 8300
+mean 100 episode reward: -1.0784
+mean 100 episode loss: 9.82e-06
+mean 100 novel states: 2.01
+% time spent exploring: 71
+********************************************************
+********************************************************
+steps: 32072
+episodes: 8400
+mean 100 episode reward: -1.1485
+mean 100 episode loss: 9.73e-06
+mean 100 novel states: 2.091
+% time spent exploring: 71
+********************************************************
+********************************************************
+steps: 32559
+episodes: 8500
+mean 100 episode reward: -1.1175
+mean 100 episode loss: 1.101e-05
+mean 100 novel states: 2.283
+% time spent exploring: 70
+********************************************************
+********************************************************
+steps: 33048
+episodes: 8600
+mean 100 episode reward: -1.1271
+mean 100 episode loss: 1.054e-05
+mean 100 novel states: 2.465
+% time spent exploring: 70
+********************************************************
+********************************************************
+steps: 33551
+episodes: 8700
+mean 100 episode reward: -1.1389
+mean 100 episode loss: 9.72e-06
+mean 100 novel states: 2.343
+% time spent exploring: 69
+********************************************************
+********************************************************
+steps: 34000
+episodes: 8800
+mean 100 episode reward: -0.9359
+mean 100 episode loss: 9.77e-06
+mean 100 novel states: 2.293
+% time spent exploring: 69
+********************************************************
+********************************************************
+steps: 34472
+episodes: 8900
+mean 100 episode reward: -1.108
+mean 100 episode loss: 9.99e-06
+mean 100 novel states: 2.364
+% time spent exploring: 68
+********************************************************
+********************************************************
+steps: 34926
+episodes: 9000
+mean 100 episode reward: -1.2198
+mean 100 episode loss: 1.02e-05
+mean 100 novel states: 2.202
+% time spent exploring: 68
+********************************************************
+********************************************************
+steps: 35505
+episodes: 9100
+mean 100 episode reward: -1.2304
+mean 100 episode loss: 6.73e-06
+mean 100 novel states: 2.808
+% time spent exploring: 68
+********************************************************
+********************************************************
+steps: 36045
+episodes: 9200
+mean 100 episode reward: -1.0471
+mean 100 episode loss: 6.64e-06
+mean 100 novel states: 2.657
+% time spent exploring: 67
+********************************************************
+********************************************************
+steps: 36560
+episodes: 9300
+mean 100 episode reward: -1.2987
+mean 100 episode loss: 7.33e-06
+mean 100 novel states: 2.636
+% time spent exploring: 67
+********************************************************
+********************************************************
+steps: 37044
+episodes: 9400
+mean 100 episode reward: -1.0785
+mean 100 episode loss: 5.91e-06
+mean 100 novel states: 2.424
+% time spent exploring: 66
+********************************************************
+********************************************************
+steps: 37505
+episodes: 9500
+mean 100 episode reward: -0.9667
+mean 100 episode loss: 7.07e-06
+mean 100 novel states: 2.253
+% time spent exploring: 66
+********************************************************
+********************************************************
+steps: 38028
+episodes: 9600
+mean 100 episode reward: -0.9476
+mean 100 episode loss: 7.14e-06
+mean 100 novel states: 2.424
+% time spent exploring: 65
+********************************************************
+********************************************************
+steps: 38470
+episodes: 9700
+mean 100 episode reward: -1.0867
+mean 100 episode loss: 6.72e-06
+mean 100 novel states: 2.202
+% time spent exploring: 65
+********************************************************
+********************************************************
+steps: 39005
+episodes: 9800
+mean 100 episode reward: -1.1703
+mean 100 episode loss: 2.513e-05
+mean 100 novel states: 2.646
+% time spent exploring: 64
+********************************************************
+********************************************************
+steps: 39490
+episodes: 9900
+mean 100 episode reward: -0.9562
+mean 100 episode loss: 6.11e-06
+mean 100 novel states: 2.485
+% time spent exploring: 64
+********************************************************
+********************************************************
+steps: 40007
+episodes: 10000
+mean 100 episode reward: -1.149
+mean 100 episode loss: 6.05e-06
+mean 100 novel states: 2.394
+% time spent exploring: 63
+********************************************************
+********************************************************
+steps: 40537
+episodes: 10100
+mean 100 episode reward: -1.1075
+mean 100 episode loss: 4.36e-06
+mean 100 novel states: 2.485
+% time spent exploring: 63
+********************************************************
+********************************************************
+steps: 41042
+episodes: 10200
+mean 100 episode reward: -1.1882
+mean 100 episode loss: 7.053e-05
+mean 100 novel states: 2.535
+% time spent exploring: 63
+********************************************************
+********************************************************
+steps: 41630
+episodes: 10300
+mean 100 episode reward: -1.15
+mean 100 episode loss: 4.72e-06
+mean 100 novel states: 2.818
+% time spent exploring: 62
+********************************************************
+********************************************************
+steps: 42248
+episodes: 10400
+mean 100 episode reward: -1.3316
+mean 100 episode loss: 4.28e-06
+mean 100 novel states: 2.879
+% time spent exploring: 61
+********************************************************
+********************************************************
+steps: 42705
+episodes: 10500
+mean 100 episode reward: -0.9667
+mean 100 episode loss: 4.11e-06
+mean 100 novel states: 2.293
+% time spent exploring: 61
+********************************************************
+********************************************************
+steps: 43297
+episodes: 10600
+mean 100 episode reward: -1.2182
+mean 100 episode loss: 4.47e-06
+mean 100 novel states: 2.879
+% time spent exploring: 61
+********************************************************
+********************************************************
+steps: 43890
+episodes: 10700
+mean 100 episode reward: -1.2799
+mean 100 episode loss: 4.48e-06
+mean 100 novel states: 2.919
+% time spent exploring: 60
+********************************************************
+********************************************************
+steps: 44450
+episodes: 10800
+mean 100 episode reward: -1.221
+mean 100 episode loss: 1.977e-05
+mean 100 novel states: 2.707
+% time spent exploring: 59
+********************************************************
+********************************************************
+steps: 45024
+episodes: 10900
+mean 100 episode reward: -0.9774
+mean 100 episode loss: 3.728e-05
+mean 100 novel states: 2.909
+% time spent exploring: 59
+********************************************************
+********************************************************
+steps: 45580
+episodes: 11000
+mean 100 episode reward: -1.0985
+mean 100 episode loss: 1.06e-05
+mean 100 novel states: 2.727
+% time spent exploring: 58
+********************************************************
+********************************************************
+steps: 46094
+episodes: 11100
+mean 100 episode reward: -1.1386
+mean 100 episode loss: 4.3e-06
+mean 100 novel states: 2.485
+% time spent exploring: 58
+********************************************************
+********************************************************
+steps: 46587
+episodes: 11200
+mean 100 episode reward: -1.117
+mean 100 episode loss: 4.14e-06
+mean 100 novel states: 2.485
+% time spent exploring: 58
+********************************************************
+********************************************************
+steps: 47158
+episodes: 11300
+mean 100 episode reward: -0.9975
+mean 100 episode loss: 6.938e-05
+mean 100 novel states: 2.737
+% time spent exploring: 57
+********************************************************
+********************************************************
+steps: 47730
+episodes: 11400
+mean 100 episode reward: -0.9974
+mean 100 episode loss: 8.397e-05
+mean 100 novel states: 2.747
+% time spent exploring: 57
+********************************************************
+********************************************************
+steps: 48232
+episodes: 11500
+mean 100 episode reward: -0.9558
+mean 100 episode loss: 4.61e-06
+mean 100 novel states: 2.485
+% time spent exploring: 56
+********************************************************
+********************************************************
+steps: 48713
+episodes: 11600
+mean 100 episode reward: -1.0776
+mean 100 episode loss: 4.24e-06
+mean 100 novel states: 2.444
+% time spent exploring: 56
+********************************************************
+********************************************************
+steps: 49251
+episodes: 11700
+mean 100 episode reward: -1.0484
+mean 100 episode loss: 4.55e-06
+mean 100 novel states: 2.687
+% time spent exploring: 55
+********************************************************
+********************************************************
+steps: 49783
+episodes: 11800
+mean 100 episode reward: -0.9769
+mean 100 episode loss: 4.89e-05
+mean 100 novel states: 2.606
+% time spent exploring: 55
+********************************************************
+********************************************************
+steps: 50390
+episodes: 11900
+mean 100 episode reward: -1.1104
+mean 100 episode loss: 1.261e-05
+mean 100 novel states: 2.97
+% time spent exploring: 54
+********************************************************
+********************************************************
+steps: 50997
+episodes: 12000
+mean 100 episode reward: -1.1889
+mean 100 episode loss: 4.73e-06
+mean 100 novel states: 2.98
+% time spent exploring: 54
+********************************************************
+********************************************************
+steps: 51548
+episodes: 12100
+mean 100 episode reward: -0.917
+mean 100 episode loss: 4.57e-06
+mean 100 novel states: 2.737
+% time spent exploring: 53
+********************************************************
+********************************************************
+steps: 52120
+episodes: 12200
+mean 100 episode reward: -1.0662
+mean 100 episode loss: 4.97e-06
+mean 100 novel states: 3.152
+% time spent exploring: 53
+********************************************************
+********************************************************
+steps: 52648
+episodes: 12300
+mean 100 episode reward: -1.0973
+mean 100 episode loss: 5.02e-06
+mean 100 novel states: 2.556
+% time spent exploring: 52
+********************************************************
+********************************************************
+steps: 53301
+episodes: 12400
+mean 100 episode reward: -1.0998
+mean 100 episode loss: 1.752e-05
+mean 100 novel states: 3.071
+% time spent exploring: 52
+********************************************************
+********************************************************
+steps: 53807
+episodes: 12500
+mean 100 episode reward: -1.0369
+mean 100 episode loss: 5.03e-06
+mean 100 novel states: 2.414
+% time spent exploring: 51
+********************************************************
+********************************************************
+steps: 54435
+episodes: 12600
+mean 100 episode reward: -1.0167
+mean 100 episode loss: 9.745e-05
+mean 100 novel states: 2.899
+% time spent exploring: 51
+********************************************************
+********************************************************
+steps: 54995
+episodes: 12700
+mean 100 episode reward: -0.9161
+mean 100 episode loss: 5.1e-06
+mean 100 novel states: 2.657
+% time spent exploring: 50
+********************************************************
+********************************************************
+steps: 55591
+episodes: 12800
+mean 100 episode reward: -1.0779
+mean 100 episode loss: 4.456e-05
+mean 100 novel states: 2.788
+% time spent exploring: 49
+********************************************************
+********************************************************
+steps: 56207
+episodes: 12900
+mean 100 episode reward: -0.9978
+mean 100 episode loss: 4.26e-06
+mean 100 novel states: 2.919
+% time spent exploring: 49
+********************************************************
+********************************************************
+steps: 56958
+episodes: 13000
+mean 100 episode reward: -1.2095
+mean 100 episode loss: 4.55e-06
+mean 100 novel states: 3.495
+% time spent exploring: 48
+********************************************************
+********************************************************
+steps: 57576
+episodes: 13100
+mean 100 episode reward: -1.0375
+mean 100 episode loss: 2.738e-05
+mean 100 novel states: 3.121
+% time spent exploring: 48
+********************************************************
+********************************************************
+steps: 58229
+episodes: 13200
+mean 100 episode reward: -1.0283
+mean 100 episode loss: 4.37e-06
+mean 100 novel states: 3.222
+% time spent exploring: 47
+********************************************************
+********************************************************
+steps: 58935
+episodes: 13300
+mean 100 episode reward: -0.8456
+mean 100 episode loss: 5.171e-05
+mean 100 novel states: 3.394
+% time spent exploring: 46
+********************************************************
+********************************************************
+steps: 59503
+episodes: 13400
+mean 100 episode reward: -0.7356
+mean 100 episode loss: 6.434e-05
+mean 100 novel states: 2.798
+% time spent exploring: 46
+********************************************************
+********************************************************
+steps: 60143
+episodes: 13500
+mean 100 episode reward: -0.9362
+mean 100 episode loss: 9.896e-05
+mean 100 novel states: 3.253
+% time spent exploring: 45
+********************************************************
+********************************************************
+steps: 60729
+episodes: 13600
+mean 100 episode reward: -0.9969
+mean 100 episode loss: 5.84e-06
+mean 100 novel states: 2.848
+% time spent exploring: 45
+********************************************************
+********************************************************
+steps: 61435
+episodes: 13700
+mean 100 episode reward: -1.0472
+mean 100 episode loss: 7.613e-05
+mean 100 novel states: 3.646
+% time spent exploring: 44
+********************************************************
+********************************************************
+steps: 62158
+episodes: 13800
+mean 100 episode reward: -1.1593
+mean 100 episode loss: 3.752e-05
+mean 100 novel states: 3.444
+% time spent exploring: 44
+********************************************************
+********************************************************
+steps: 62833
+episodes: 13900
+mean 100 episode reward: -0.9062
+mean 100 episode loss: 5.221e-05
+mean 100 novel states: 3.303
+% time spent exploring: 43
+********************************************************
+********************************************************
+steps: 63429
+episodes: 14000
+mean 100 episode reward: -0.9658
+mean 100 episode loss: 2.558e-05
+mean 100 novel states: 3.081
+% time spent exploring: 42
+********************************************************
+********************************************************
+steps: 64058
+episodes: 14100
+mean 100 episode reward: -1.0168
+mean 100 episode loss: 5.724e-05
+mean 100 novel states: 3.121
+% time spent exploring: 42
+********************************************************
+********************************************************
+steps: 64717
+episodes: 14200
+mean 100 episode reward: -0.8457
+mean 100 episode loss: 1.556e-05
+mean 100 novel states: 3.374
+% time spent exploring: 41
+********************************************************
+********************************************************
+steps: 65343
+episodes: 14300
+mean 100 episode reward: -0.9867
+mean 100 episode loss: 6.921e-05
+mean 100 novel states: 3.202
+% time spent exploring: 41
+********************************************************
+********************************************************
+steps: 66013
+episodes: 14400
+mean 100 episode reward: -0.9075
+mean 100 episode loss: 6.819e-05
+mean 100 novel states: 3.192
+% time spent exploring: 40
+********************************************************
+********************************************************
+steps: 66674
+episodes: 14500
+mean 100 episode reward: -0.9143
+mean 100 episode loss: 3.666e-05
+mean 100 novel states: 3.424
+% time spent exploring: 39
+********************************************************
+********************************************************
+steps: 67367
+episodes: 14600
+mean 100 episode reward: -0.9261
+mean 100 episode loss: 4.94e-06
+mean 100 novel states: 3.313
+% time spent exploring: 39
+********************************************************
+********************************************************
+steps: 68120
+episodes: 14700
+mean 100 episode reward: -0.9566
+mean 100 episode loss: 4.854e-05
+mean 100 novel states: 3.747
+% time spent exploring: 38
+********************************************************
+********************************************************
+steps: 68729
+episodes: 14800
+mean 100 episode reward: -0.7746
+mean 100 episode loss: 5.779e-05
+mean 100 novel states: 3.202
+% time spent exploring: 38
+********************************************************
+********************************************************
+steps: 69391
+episodes: 14900
+mean 100 episode reward: -0.9573
+mean 100 episode loss: 8.664e-05
+mean 100 novel states: 3.283
+% time spent exploring: 37
+********************************************************
+********************************************************
+steps: 70081
+episodes: 15000
+mean 100 episode reward: -0.966
+mean 100 episode loss: 3.186e-05
+mean 100 novel states: 3.586
+% time spent exploring: 36
+********************************************************
+********************************************************
+steps: 70809
+episodes: 15100
+mean 100 episode reward: -0.9669
+mean 100 episode loss: 3.634e-05
+mean 100 novel states: 3.475
+% time spent exploring: 36
+********************************************************
+********************************************************
+steps: 71590
+episodes: 15200
+mean 100 episode reward: -0.947
+mean 100 episode loss: 1.163e-05
+mean 100 novel states: 3.859
+% time spent exploring: 35
+********************************************************
+********************************************************
+steps: 72229
+episodes: 15300
+mean 100 episode reward: -0.8651
+mean 100 episode loss: 3.158e-05
+mean 100 novel states: 3.273
+% time spent exploring: 34
+********************************************************
+********************************************************
+steps: 72906
+episodes: 15400
+mean 100 episode reward: -0.9164
+mean 100 episode loss: 4.29e-06
+mean 100 novel states: 3.535
+% time spent exploring: 34
+********************************************************
+********************************************************
+steps: 73622
+episodes: 15500
+mean 100 episode reward: -0.7552
+mean 100 episode loss: 5.776e-05
+mean 100 novel states: 3.606
+% time spent exploring: 33
+********************************************************
+********************************************************
+steps: 74355
+episodes: 15600
+mean 100 episode reward: -0.7246
+mean 100 episode loss: 1.348e-05
+mean 100 novel states: 3.677
+% time spent exploring: 33
+********************************************************
+********************************************************
+steps: 75152
+episodes: 15700
+mean 100 episode reward: -0.8349
+mean 100 episode loss: 3.475e-05
+mean 100 novel states: 3.919
+% time spent exploring: 32
+********************************************************
+********************************************************
+steps: 75901
+episodes: 15800
+mean 100 episode reward: -0.7848
+mean 100 episode loss: 2.363e-05
+mean 100 novel states: 3.657
+% time spent exploring: 31
+********************************************************
+********************************************************
+steps: 76817
+episodes: 15900
+mean 100 episode reward: -0.8358
+mean 100 episode loss: 1.67e-05
+mean 100 novel states: 4.566
+% time spent exploring: 30
+********************************************************
+********************************************************
+steps: 77630
+episodes: 16000
+mean 100 episode reward: -0.8045
+mean 100 episode loss: 2.16e-05
+mean 100 novel states: 3.899
+% time spent exploring: 30
+********************************************************
+********************************************************
+steps: 78377
+episodes: 16100
+mean 100 episode reward: -0.7735
+mean 100 episode loss: 4.416e-05
+mean 100 novel states: 3.859
+% time spent exploring: 29
+********************************************************
+********************************************************
+steps: 79219
+episodes: 16200
+mean 100 episode reward: -0.8352
+mean 100 episode loss: 2.41e-05
+mean 100 novel states: 4.172
+% time spent exploring: 28
+********************************************************
+********************************************************
+steps: 80022
+episodes: 16300
+mean 100 episode reward: -0.674
+mean 100 episode loss: 5.67e-06
+mean 100 novel states: 4.071
+% time spent exploring: 27
+********************************************************
+********************************************************
+steps: 80780
+episodes: 16400
+mean 100 episode reward: -0.8159
+mean 100 episode loss: 4.044e-05
+mean 100 novel states: 3.99
+% time spent exploring: 27
+********************************************************
+********************************************************
+steps: 81525
+episodes: 16500
+mean 100 episode reward: -0.5723
+mean 100 episode loss: 1.554e-05
+mean 100 novel states: 3.869
+% time spent exploring: 26
+********************************************************
+********************************************************
+steps: 82285
+episodes: 16600
+mean 100 episode reward: -0.7644
+mean 100 episode loss: 4.88e-06
+mean 100 novel states: 4.071
+% time spent exploring: 25
+********************************************************
+********************************************************
+steps: 83041
+episodes: 16700
+mean 100 episode reward: -0.6827
+mean 100 episode loss: 1.776e-05
+mean 100 novel states: 3.879
+% time spent exploring: 25
+********************************************************
+********************************************************
+steps: 83805
+episodes: 16800
+mean 100 episode reward: -0.561
+mean 100 episode loss: 7.47e-05
+mean 100 novel states: 4.313
+% time spent exploring: 24
+********************************************************
+********************************************************
+steps: 84595
+episodes: 16900
+mean 100 episode reward: -0.5916
+mean 100 episode loss: 5.12e-06
+mean 100 novel states: 4.172
+% time spent exploring: 23
+********************************************************
+********************************************************
+steps: 85315
+episodes: 17000
+mean 100 episode reward: -0.6323
+mean 100 episode loss: 3.325e-05
+mean 100 novel states: 3.727
+% time spent exploring: 23
+********************************************************
+********************************************************
+steps: 86118
+episodes: 17100
+mean 100 episode reward: -0.6833
+mean 100 episode loss: 5.05e-06
+mean 100 novel states: 4.111
+% time spent exploring: 22
+********************************************************
+********************************************************
+steps: 86997
+episodes: 17200
+mean 100 episode reward: -0.6507
+mean 100 episode loss: 5.08e-06
+mean 100 novel states: 4.434
+% time spent exploring: 21
+********************************************************
+********************************************************
+steps: 87627
+episodes: 17300
+mean 100 episode reward: -0.4609
+mean 100 episode loss: 3.453e-05
+mean 100 novel states: 3.364
+% time spent exploring: 21
+********************************************************
+********************************************************
+steps: 88427
+episodes: 17400
+mean 100 episode reward: -0.4904
+mean 100 episode loss: 2.108e-05
+mean 100 novel states: 4.131
+% time spent exploring: 20
+********************************************************
+********************************************************
+steps: 89462
+episodes: 17500
+mean 100 episode reward: -0.5404
+mean 100 episode loss: 1.239e-05
+mean 100 novel states: 5.131
+% time spent exploring: 19
+********************************************************
+********************************************************
+steps: 90316
+episodes: 17600
+mean 100 episode reward: -0.5918
+mean 100 episode loss: 6e-05
+mean 100 novel states: 4.333
+% time spent exploring: 18
+********************************************************
+********************************************************
+steps: 91187
+episodes: 17700
+mean 100 episode reward: -0.6224
+mean 100 episode loss: 7.959e-05
+mean 100 novel states: 4.485
+% time spent exploring: 17
+********************************************************
+********************************************************
+steps: 91961
+episodes: 17800
+mean 100 episode reward: -0.4307
+mean 100 episode loss: 1.465e-05
+mean 100 novel states: 3.929
+% time spent exploring: 17
+********************************************************
+********************************************************
+steps: 92797
+episodes: 17900
+mean 100 episode reward: -0.3804
+mean 100 episode loss: 5.806e-05
+mean 100 novel states: 4.172
+% time spent exploring: 16
+********************************************************
+********************************************************
+steps: 93737
+episodes: 18000
+mean 100 episode reward: -0.5504
+mean 100 episode loss: 1.351e-05
+mean 100 novel states: 5.081
+% time spent exploring: 15
+********************************************************
+********************************************************
+steps: 94728
+episodes: 18100
+mean 100 episode reward: -0.5596
+mean 100 episode loss: 5.55e-06
+mean 100 novel states: 4.98
+% time spent exploring: 14
+********************************************************
+********************************************************
+steps: 95763
+episodes: 18200
+mean 100 episode reward: -0.4506
+mean 100 episode loss: 5.6e-06
+mean 100 novel states: 5.253
+% time spent exploring: 13
+********************************************************
+********************************************************
+steps: 96750
+episodes: 18300
+mean 100 episode reward: -0.5195
+mean 100 episode loss: 1.221e-05
+mean 100 novel states: 5.626
+% time spent exploring: 12
+********************************************************
+********************************************************
+steps: 97638
+episodes: 18400
+mean 100 episode reward: -0.4586
+mean 100 episode loss: 3.743e-05
+mean 100 novel states: 4.343
+% time spent exploring: 12
+********************************************************
+********************************************************
+steps: 98352
+episodes: 18500
+mean 100 episode reward: -0.308
+mean 100 episode loss: 3.017e-05
+mean 100 novel states: 3.778
+% time spent exploring: 11
+********************************************************
+********************************************************
+steps: 99094
+episodes: 18600
+mean 100 episode reward: -0.329
+mean 100 episode loss: 3.199e-05
+mean 100 novel states: 4.04
+% time spent exploring: 10
+********************************************************
+********************************************************
+steps: 99941
+episodes: 18700
+mean 100 episode reward: -0.3277
+mean 100 episode loss: 7.46e-05
+mean 100 novel states: 4.374
+% time spent exploring: 10
+********************************************************
+********************************************************
+steps: 100905
+episodes: 18800
+mean 100 episode reward: -0.3877
+mean 100 episode loss: 2.671e-05
+mean 100 novel states: 5.0
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 101996
+episodes: 18900
+mean 100 episode reward: -0.2763
+mean 100 episode loss: 3.463e-05
+mean 100 novel states: 5.677
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 102795
+episodes: 19000
+mean 100 episode reward: -0.2992
+mean 100 episode loss: 5.7e-06
+mean 100 novel states: 4.04
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 103787
+episodes: 19100
+mean 100 episode reward: -0.3271
+mean 100 episode loss: 5.56e-06
+mean 100 novel states: 5.232
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 104662
+episodes: 19200
+mean 100 episode reward: -0.3486
+mean 100 episode loss: 2.762e-05
+mean 100 novel states: 4.505
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 105390
+episodes: 19300
+mean 100 episode reward: -0.3691
+mean 100 episode loss: 5.62e-06
+mean 100 novel states: 3.657
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 106223
+episodes: 19400
+mean 100 episode reward: -0.3489
+mean 100 episode loss: 0.00015683
+mean 100 novel states: 4.404
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 107148
+episodes: 19500
+mean 100 episode reward: -0.3884
+mean 100 episode loss: 1.861e-05
+mean 100 novel states: 4.869
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 108129
+episodes: 19600
+mean 100 episode reward: -0.2972
+mean 100 episode loss: 3.523e-05
+mean 100 novel states: 4.737
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 109012
+episodes: 19700
+mean 100 episode reward: -0.2983
+mean 100 episode loss: 3.612e-05
+mean 100 novel states: 4.758
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 110013
+episodes: 19800
+mean 100 episode reward: -0.3575
+mean 100 episode loss: 5.326e-05
+mean 100 novel states: 4.98
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 110999
+episodes: 19900
+mean 100 episode reward: -0.3372
+mean 100 episode loss: 3.788e-05
+mean 100 novel states: 5.303
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 111861
+episodes: 20000
+mean 100 episode reward: -0.3787
+mean 100 episode loss: 5.782e-05
+mean 100 novel states: 4.545
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 112688
+episodes: 20100
+mean 100 episode reward: -0.2872
+mean 100 episode loss: 4.499e-05
+mean 100 novel states: 4.404
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 113637
+episodes: 20200
+mean 100 episode reward: -0.3371
+mean 100 episode loss: 2.522e-05
+mean 100 novel states: 4.899
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 114451
+episodes: 20300
+mean 100 episode reward: -0.3384
+mean 100 episode loss: 3.741e-05
+mean 100 novel states: 4.303
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 115322
+episodes: 20400
+mean 100 episode reward: -0.2859
+mean 100 episode loss: 5.98e-06
+mean 100 novel states: 4.515
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 116205
+episodes: 20500
+mean 100 episode reward: -0.3688
+mean 100 episode loss: 1.205e-05
+mean 100 novel states: 4.263
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 117006
+episodes: 20600
+mean 100 episode reward: -0.2976
+mean 100 episode loss: 3.006e-05
+mean 100 novel states: 4.192
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 117976
+episodes: 20700
+mean 100 episode reward: -0.3175
+mean 100 episode loss: 2.263e-05
+mean 100 novel states: 4.636
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 118740
+episodes: 20800
+mean 100 episode reward: -0.2178
+mean 100 episode loss: 6.495e-05
+mean 100 novel states: 4.313
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 119552
+episodes: 20900
+mean 100 episode reward: -0.2978
+mean 100 episode loss: 2.888e-05
+mean 100 novel states: 3.859
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 120287
+episodes: 21000
+mean 100 episode reward: -0.2481
+mean 100 episode loss: 2.566e-05
+mean 100 novel states: 4.212
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 121197
+episodes: 21100
+mean 100 episode reward: -0.2974
+mean 100 episode loss: 4.28e-06
+mean 100 novel states: 4.98
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 122086
+episodes: 21200
+mean 100 episode reward: -0.288
+mean 100 episode loss: 3.073e-05
+mean 100 novel states: 4.808
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 122971
+episodes: 21300
+mean 100 episode reward: -0.2869
+mean 100 episode loss: 1.804e-05
+mean 100 novel states: 4.576
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 123946
+episodes: 21400
+mean 100 episode reward: -0.3476
+mean 100 episode loss: 4.56e-06
+mean 100 novel states: 5.091
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 124830
+episodes: 21500
+mean 100 episode reward: -0.3582
+mean 100 episode loss: 5.035e-05
+mean 100 novel states: 4.747
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 125723
+episodes: 21600
+mean 100 episode reward: -0.3165
+mean 100 episode loss: 1.884e-05
+mean 100 novel states: 4.657
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 126596
+episodes: 21700
+mean 100 episode reward: -0.3795
+mean 100 episode loss: 3.07e-05
+mean 100 novel states: 4.566
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 127531
+episodes: 21800
+mean 100 episode reward: -0.2968
+mean 100 episode loss: 1.252e-05
+mean 100 novel states: 4.808
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 128386
+episodes: 21900
+mean 100 episode reward: -0.378
+mean 100 episode loss: 1.317e-05
+mean 100 novel states: 4.333
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 129351
+episodes: 22000
+mean 100 episode reward: -0.3561
+mean 100 episode loss: 6.595e-05
+mean 100 novel states: 5.01
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 130239
+episodes: 22100
+mean 100 episode reward: -0.3073
+mean 100 episode loss: 5.9e-06
+mean 100 novel states: 4.869
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 131065
+episodes: 22200
+mean 100 episode reward: -0.2684
+mean 100 episode loss: 1.404e-05
+mean 100 novel states: 4.404
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 132143
+episodes: 22300
+mean 100 episode reward: -0.3866
+mean 100 episode loss: 2.094e-05
+mean 100 novel states: 5.434
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 133170
+episodes: 22400
+mean 100 episode reward: -0.2855
+mean 100 episode loss: 6.86e-05
+mean 100 novel states: 5.475
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 134115
+episodes: 22500
+mean 100 episode reward: -0.3281
+mean 100 episode loss: 7.22e-05
+mean 100 novel states: 5.02
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 134950
+episodes: 22600
+mean 100 episode reward: -0.2273
+mean 100 episode loss: 3.915e-05
+mean 100 novel states: 4.495
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 135852
+episodes: 22700
+mean 100 episode reward: -0.3076
+mean 100 episode loss: 1.7e-05
+mean 100 novel states: 4.798
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 136680
+episodes: 22800
+mean 100 episode reward: -0.2479
+mean 100 episode loss: 1.827e-05
+mean 100 novel states: 4.434
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 137405
+episodes: 22900
+mean 100 episode reward: -0.2983
+mean 100 episode loss: 0.00017293
+mean 100 novel states: 3.859
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 138145
+episodes: 23000
+mean 100 episode reward: -0.1977
+mean 100 episode loss: 6.923e-05
+mean 100 novel states: 3.636
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 139058
+episodes: 23100
+mean 100 episode reward: -0.3276
+mean 100 episode loss: 1.266e-05
+mean 100 novel states: 4.515
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 139879
+episodes: 23200
+mean 100 episode reward: -0.2569
+mean 100 episode loss: 2.205e-05
+mean 100 novel states: 4.475
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 140605
+episodes: 23300
+mean 100 episode reward: -0.3796
+mean 100 episode loss: 4.879e-05
+mean 100 novel states: 3.788
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 141541
+episodes: 23400
+mean 100 episode reward: -0.2671
+mean 100 episode loss: 5.931e-05
+mean 100 novel states: 4.98
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 142253
+episodes: 23500
+mean 100 episode reward: -0.2381
+mean 100 episode loss: 7.066e-05
+mean 100 novel states: 3.778
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 142944
+episodes: 23600
+mean 100 episode reward: -0.1778
+mean 100 episode loss: 1.55e-05
+mean 100 novel states: 3.667
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 143662
+episodes: 23700
+mean 100 episode reward: -0.2485
+mean 100 episode loss: 3.946e-05
+mean 100 novel states: 3.808
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 144479
+episodes: 23800
+mean 100 episode reward: -0.2572
+mean 100 episode loss: 5.316e-05
+mean 100 novel states: 4.212
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 145302
+episodes: 23900
+mean 100 episode reward: -0.3172
+mean 100 episode loss: 6.477e-05
+mean 100 novel states: 4.657
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 146061
+episodes: 24000
+mean 100 episode reward: -0.3375
+mean 100 episode loss: 4.462e-05
+mean 100 novel states: 4.242
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 146870
+episodes: 24100
+mean 100 episode reward: -0.2377
+mean 100 episode loss: 5.16e-06
+mean 100 novel states: 4.101
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 147631
+episodes: 24200
+mean 100 episode reward: -0.2991
+mean 100 episode loss: 5.39e-06
+mean 100 novel states: 3.939
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 148513
+episodes: 24300
+mean 100 episode reward: -0.2576
+mean 100 episode loss: 4.527e-05
+mean 100 novel states: 4.444
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 149301
+episodes: 24400
+mean 100 episode reward: -0.268
+mean 100 episode loss: 3.304e-05
+mean 100 novel states: 4.121
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 150105
+episodes: 24500
+mean 100 episode reward: -0.2476
+mean 100 episode loss: 5.527e-05
+mean 100 novel states: 4.192
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 151044
+episodes: 24600
+mean 100 episode reward: -0.2968
+mean 100 episode loss: 5.673e-05
+mean 100 novel states: 4.939
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 151965
+episodes: 24700
+mean 100 episode reward: -0.268
+mean 100 episode loss: 3.172e-05
+mean 100 novel states: 5.03
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 152671
+episodes: 24800
+mean 100 episode reward: -0.3981
+mean 100 episode loss: 7.471e-05
+mean 100 novel states: 3.929
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 153548
+episodes: 24900
+mean 100 episode reward: -0.2885
+mean 100 episode loss: 2.019e-05
+mean 100 novel states: 4.869
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 154407
+episodes: 25000
+mean 100 episode reward: -0.1868
+mean 100 episode loss: 0.00014252
+mean 100 novel states: 4.899
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 155301
+episodes: 25100
+mean 100 episode reward: -0.2465
+mean 100 episode loss: 8.657e-05
+mean 100 novel states: 4.97
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 156188
+episodes: 25200
+mean 100 episode reward: -0.369
+mean 100 episode loss: 6.658e-05
+mean 100 novel states: 4.232
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 157320
+episodes: 25300
+mean 100 episode reward: -0.2754
+mean 100 episode loss: 6.686e-05
+mean 100 novel states: 5.465
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 158273
+episodes: 25400
+mean 100 episode reward: -0.348
+mean 100 episode loss: 9.261e-05
+mean 100 novel states: 4.869
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 159166
+episodes: 25500
+mean 100 episode reward: -0.2977
+mean 100 episode loss: 4.487e-05
+mean 100 novel states: 4.576
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 160067
+episodes: 25600
+mean 100 episode reward: -0.3171
+mean 100 episode loss: 3.123e-05
+mean 100 novel states: 4.505
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 160869
+episodes: 25700
+mean 100 episode reward: -0.2781
+mean 100 episode loss: 4.726e-05
+mean 100 novel states: 3.99
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 161686
+episodes: 25800
+mean 100 episode reward: -0.2882
+mean 100 episode loss: 2.673e-05
+mean 100 novel states: 4.222
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 162352
+episodes: 25900
+mean 100 episode reward: -0.136
+mean 100 episode loss: 7.471e-05
+mean 100 novel states: 3.758
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 163261
+episodes: 26000
+mean 100 episode reward: -0.3382
+mean 100 episode loss: 7.086e-05
+mean 100 novel states: 4.747
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 164162
+episodes: 26100
+mean 100 episode reward: -0.4081
+mean 100 episode loss: 0.00011486
+mean 100 novel states: 4.727
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 164958
+episodes: 26200
+mean 100 episode reward: -0.3283
+mean 100 episode loss: 8.544e-05
+mean 100 novel states: 3.97
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 165617
+episodes: 26300
+mean 100 episode reward: -0.1981
+mean 100 episode loss: 9.179e-05
+mean 100 novel states: 3.525
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 166332
+episodes: 26400
+mean 100 episode reward: -0.1979
+mean 100 episode loss: 3.313e-05
+mean 100 novel states: 4.01
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 167093
+episodes: 26500
+mean 100 episode reward: -0.1974
+mean 100 episode loss: 9.663e-05
+mean 100 novel states: 3.98
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 167737
+episodes: 26600
+mean 100 episode reward: -0.3076
+mean 100 episode loss: 8.955e-05
+mean 100 novel states: 3.424
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 168600
+episodes: 26700
+mean 100 episode reward: -0.3276
+mean 100 episode loss: 4.956e-05
+mean 100 novel states: 4.586
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 169368
+episodes: 26800
+mean 100 episode reward: -0.328
+mean 100 episode loss: 4.322e-05
+mean 100 novel states: 4.192
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 170094
+episodes: 26900
+mean 100 episode reward: -0.288
+mean 100 episode loss: 5.45e-06
+mean 100 novel states: 3.626
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 170990
+episodes: 27000
+mean 100 episode reward: -0.4083
+mean 100 episode loss: 0.00010291
+mean 100 novel states: 4.727
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 171799
+episodes: 27100
+mean 100 episode reward: -0.347
+mean 100 episode loss: 6.517e-05
+mean 100 novel states: 4.424
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 172722
+episodes: 27200
+mean 100 episode reward: -0.3186
+mean 100 episode loss: 3.838e-05
+mean 100 novel states: 4.919
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 173556
+episodes: 27300
+mean 100 episode reward: -0.2582
+mean 100 episode loss: 2.375e-05
+mean 100 novel states: 4.556
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 174457
+episodes: 27400
+mean 100 episode reward: -0.3181
+mean 100 episode loss: 8.044e-05
+mean 100 novel states: 4.808
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 175292
+episodes: 27500
+mean 100 episode reward: -0.2673
+mean 100 episode loss: 8.776e-05
+mean 100 novel states: 4.687
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 176156
+episodes: 27600
+mean 100 episode reward: -0.2685
+mean 100 episode loss: 2.366e-05
+mean 100 novel states: 4.374
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 176938
+episodes: 27700
+mean 100 episode reward: -0.2276
+mean 100 episode loss: 7.173e-05
+mean 100 novel states: 3.96
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 177839
+episodes: 27800
+mean 100 episode reward: -0.318
+mean 100 episode loss: 0.00012655
+mean 100 novel states: 4.747
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 178713
+episodes: 27900
+mean 100 episode reward: -0.3175
+mean 100 episode loss: 4.45e-05
+mean 100 novel states: 4.717
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 179543
+episodes: 28000
+mean 100 episode reward: -0.2871
+mean 100 episode loss: 1.249e-05
+mean 100 novel states: 4.485
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 180407
+episodes: 28100
+mean 100 episode reward: -0.3073
+mean 100 episode loss: 6.902e-05
+mean 100 novel states: 4.475
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 181300
+episodes: 28200
+mean 100 episode reward: -0.2574
+mean 100 episode loss: 2.611e-05
+mean 100 novel states: 4.929
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 182210
+episodes: 28300
+mean 100 episode reward: -0.3171
+mean 100 episode loss: 7.151e-05
+mean 100 novel states: 4.879
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 183065
+episodes: 28400
+mean 100 episode reward: -0.3082
+mean 100 episode loss: 4.676e-05
+mean 100 novel states: 4.626
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 183852
+episodes: 28500
+mean 100 episode reward: -0.2872
+mean 100 episode loss: 1.818e-05
+mean 100 novel states: 4.343
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 184660
+episodes: 28600
+mean 100 episode reward: -0.2479
+mean 100 episode loss: 5.144e-05
+mean 100 novel states: 4.293
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 185379
+episodes: 28700
+mean 100 episode reward: -0.2885
+mean 100 episode loss: 5.983e-05
+mean 100 novel states: 3.636
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 186274
+episodes: 28800
+mean 100 episode reward: -0.3674
+mean 100 episode loss: 4.33e-05
+mean 100 novel states: 4.455
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 187235
+episodes: 28900
+mean 100 episode reward: -0.3776
+mean 100 episode loss: 7.63e-05
+mean 100 novel states: 4.697
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 188097
+episodes: 29000
+mean 100 episode reward: -0.3979
+mean 100 episode loss: 4.22e-05
+mean 100 novel states: 4.545
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 188878
+episodes: 29100
+mean 100 episode reward: -0.3675
+mean 100 episode loss: 6.247e-05
+mean 100 novel states: 4.121
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 189717
+episodes: 29200
+mean 100 episode reward: -0.3682
+mean 100 episode loss: 1.402e-05
+mean 100 novel states: 4.414
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 190578
+episodes: 29300
+mean 100 episode reward: -0.3181
+mean 100 episode loss: 2.613e-05
+mean 100 novel states: 4.434
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 191470
+episodes: 29400
+mean 100 episode reward: -0.3291
+mean 100 episode loss: 2.05e-05
+mean 100 novel states: 4.626
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 192431
+episodes: 29500
+mean 100 episode reward: -0.2564
+mean 100 episode loss: 9.544e-05
+mean 100 novel states: 5.192
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 193269
+episodes: 29600
+mean 100 episode reward: -0.3185
+mean 100 episode loss: 5.184e-05
+mean 100 novel states: 4.414
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 194218
+episodes: 29700
+mean 100 episode reward: -0.2575
+mean 100 episode loss: 0.00015208
+mean 100 novel states: 4.949
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 195153
+episodes: 29800
+mean 100 episode reward: -0.3383
+mean 100 episode loss: 8.578e-05
+mean 100 novel states: 4.859
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 196137
+episodes: 29900
+mean 100 episode reward: -0.3161
+mean 100 episode loss: 3.981e-05
+mean 100 novel states: 5.0
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 197181
+episodes: 30000
+mean 100 episode reward: -0.2663
+mean 100 episode loss: 6.812e-05
+mean 100 novel states: 5.273
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 198199
+episodes: 30100
+mean 100 episode reward: -0.2276
+mean 100 episode loss: 5.06e-05
+mean 100 novel states: 4.869
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 199187
+episodes: 30200
+mean 100 episode reward: -0.287
+mean 100 episode loss: 0.00011636
+mean 100 novel states: 4.909
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 200141
+episodes: 30300
+mean 100 episode reward: -0.2866
+mean 100 episode loss: 8.502e-05
+mean 100 novel states: 4.758
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 201085
+episodes: 30400
+mean 100 episode reward: -0.3483
+mean 100 episode loss: 8.204e-05
+mean 100 novel states: 4.96
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 201982
+episodes: 30500
+mean 100 episode reward: -0.2563
+mean 100 episode loss: 2.818e-05
+mean 100 novel states: 4.818
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 202870
+episodes: 30600
+mean 100 episode reward: -0.3455
+mean 100 episode loss: 3.859e-05
+mean 100 novel states: 4.697
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 203770
+episodes: 30700
+mean 100 episode reward: -0.3784
+mean 100 episode loss: 6.47e-05
+mean 100 novel states: 4.455
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 204689
+episodes: 30800
+mean 100 episode reward: -0.2674
+mean 100 episode loss: 3.323e-05
+mean 100 novel states: 5.071
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 205468
+episodes: 30900
+mean 100 episode reward: -0.2469
+mean 100 episode loss: 0.00010019
+mean 100 novel states: 4.121
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 206437
+episodes: 31000
+mean 100 episode reward: -0.2254
+mean 100 episode loss: 2.541e-05
+mean 100 novel states: 4.97
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 207261
+episodes: 31100
+mean 100 episode reward: -0.2773
+mean 100 episode loss: 8.431e-05
+mean 100 novel states: 4.384
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 208155
+episodes: 31200
+mean 100 episode reward: -0.3473
+mean 100 episode loss: 6.984e-05
+mean 100 novel states: 4.646
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 208989
+episodes: 31300
+mean 100 episode reward: -0.3479
+mean 100 episode loss: 0.00011176
+mean 100 novel states: 4.384
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 209997
+episodes: 31400
+mean 100 episode reward: -0.2772
+mean 100 episode loss: 6.348e-05
+mean 100 novel states: 5.404
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 210923
+episodes: 31500
+mean 100 episode reward: -0.246
+mean 100 episode loss: 5.612e-05
+mean 100 novel states: 4.444
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 211716
+episodes: 31600
+mean 100 episode reward: -0.2267
+mean 100 episode loss: 6.806e-05
+mean 100 novel states: 4.202
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 212481
+episodes: 31700
+mean 100 episode reward: -0.2482
+mean 100 episode loss: 0.00012172
+mean 100 novel states: 4.02
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 213345
+episodes: 31800
+mean 100 episode reward: -0.3791
+mean 100 episode loss: 9.008e-05
+mean 100 novel states: 4.505
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 214115
+episodes: 31900
+mean 100 episode reward: -0.2874
+mean 100 episode loss: 8.821e-05
+mean 100 novel states: 3.889
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 214973
+episodes: 32000
+mean 100 episode reward: -0.3582
+mean 100 episode loss: 6.133e-05
+mean 100 novel states: 4.333
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 215808
+episodes: 32100
+mean 100 episode reward: -0.387
+mean 100 episode loss: 9.639e-05
+mean 100 novel states: 4.384
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 216670
+episodes: 32200
+mean 100 episode reward: -0.2971
+mean 100 episode loss: 5.711e-05
+mean 100 novel states: 4.556
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 217536
+episodes: 32300
+mean 100 episode reward: -0.3278
+mean 100 episode loss: 0.00010433
+mean 100 novel states: 4.343
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 218403
+episodes: 32400
+mean 100 episode reward: -0.3684
+mean 100 episode loss: 1.958e-05
+mean 100 novel states: 4.586
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 219397
+episodes: 32500
+mean 100 episode reward: -0.2854
+mean 100 episode loss: 0.00011416
+mean 100 novel states: 5.141
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 220243
+episodes: 32600
+mean 100 episode reward: -0.3585
+mean 100 episode loss: 4.117e-05
+mean 100 novel states: 4.525
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 221134
+episodes: 32700
+mean 100 episode reward: -0.2466
+mean 100 episode loss: 4.104e-05
+mean 100 novel states: 4.455
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 221966
+episodes: 32800
+mean 100 episode reward: -0.2884
+mean 100 episode loss: 7.582e-05
+mean 100 novel states: 4.182
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 222818
+episodes: 32900
+mean 100 episode reward: -0.3378
+mean 100 episode loss: 2.858e-05
+mean 100 novel states: 4.444
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 223602
+episodes: 33000
+mean 100 episode reward: -0.2879
+mean 100 episode loss: 4.698e-05
+mean 100 novel states: 3.99
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 224633
+episodes: 33100
+mean 100 episode reward: -0.3776
+mean 100 episode loss: 2.393e-05
+mean 100 novel states: 5.232
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 225609
+episodes: 33200
+mean 100 episode reward: -0.3386
+mean 100 episode loss: 0.0001932
+mean 100 novel states: 4.455
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 226443
+episodes: 33300
+mean 100 episode reward: -0.2678
+mean 100 episode loss: 8.402e-05
+mean 100 novel states: 4.141
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 227206
+episodes: 33400
+mean 100 episode reward: -0.1666
+mean 100 episode loss: 0.00020221
+mean 100 novel states: 3.707
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 228029
+episodes: 33500
+mean 100 episode reward: -0.2782
+mean 100 episode loss: 0.00013046
+mean 100 novel states: 3.758
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 228748
+episodes: 33600
+mean 100 episode reward: -0.3383
+mean 100 episode loss: 2.527e-05
+mean 100 novel states: 3.343
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 229366
+episodes: 33700
+mean 100 episode reward: -0.2881
+mean 100 episode loss: 0.00010018
+mean 100 novel states: 2.99
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 230190
+episodes: 33800
+mean 100 episode reward: -0.298
+mean 100 episode loss: 0.00011188
+mean 100 novel states: 3.798
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 231107
+episodes: 33900
+mean 100 episode reward: -0.3074
+mean 100 episode loss: 8.18e-05
+mean 100 novel states: 4.96
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 231928
+episodes: 34000
+mean 100 episode reward: -0.3687
+mean 100 episode loss: 0.00010032
+mean 100 novel states: 4.354
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 232649
+episodes: 34100
+mean 100 episode reward: -0.2378
+mean 100 episode loss: 6.966e-05
+mean 100 novel states: 3.909
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 233574
+episodes: 34200
+mean 100 episode reward: -0.2265
+mean 100 episode loss: 4.778e-05
+mean 100 novel states: 4.808
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 234397
+episodes: 34300
+mean 100 episode reward: -0.2167
+mean 100 episode loss: 1.9e-05
+mean 100 novel states: 4.212
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 235208
+episodes: 34400
+mean 100 episode reward: -0.2771
+mean 100 episode loss: 0.00010734
+mean 100 novel states: 4.505
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 236056
+episodes: 34500
+mean 100 episode reward: -0.3785
+mean 100 episode loss: 9.47e-05
+mean 100 novel states: 4.404
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 237061
+episodes: 34600
+mean 100 episode reward: -0.317
+mean 100 episode loss: 4.463e-05
+mean 100 novel states: 5.101
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 237934
+episodes: 34700
+mean 100 episode reward: -0.3789
+mean 100 episode loss: 6.224e-05
+mean 100 novel states: 4.707
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 238850
+episodes: 34800
+mean 100 episode reward: -0.2969
+mean 100 episode loss: 4.457e-05
+mean 100 novel states: 4.636
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 239733
+episodes: 34900
+mean 100 episode reward: -0.3567
+mean 100 episode loss: 0.0001321
+mean 100 novel states: 4.414
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 240634
+episodes: 35000
+mean 100 episode reward: -0.3377
+mean 100 episode loss: 9.07e-05
+mean 100 novel states: 4.545
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 241639
+episodes: 35100
+mean 100 episode reward: -0.3275
+mean 100 episode loss: 5.974e-05
+mean 100 novel states: 5.232
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 242542
+episodes: 35200
+mean 100 episode reward: -0.4282
+mean 100 episode loss: 0.00013348
+mean 100 novel states: 4.758
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 243483
+episodes: 35300
+mean 100 episode reward: -0.3573
+mean 100 episode loss: 6.906e-05
+mean 100 novel states: 4.859
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 244286
+episodes: 35400
+mean 100 episode reward: -0.3288
+mean 100 episode loss: 2.411e-05
+mean 100 novel states: 4.091
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 245108
+episodes: 35500
+mean 100 episode reward: -0.2371
+mean 100 episode loss: 0.00013071
+mean 100 novel states: 4.364
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 245956
+episodes: 35600
+mean 100 episode reward: -0.2168
+mean 100 episode loss: 2.949e-05
+mean 100 novel states: 4.434
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 246877
+episodes: 35700
+mean 100 episode reward: -0.329
+mean 100 episode loss: 1.181e-05
+mean 100 novel states: 4.293
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 247638
+episodes: 35800
+mean 100 episode reward: -0.2787
+mean 100 episode loss: 0.00012079
+mean 100 novel states: 4.03
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 248588
+episodes: 35900
+mean 100 episode reward: -0.4102
+mean 100 episode loss: 0.00011596
+mean 100 novel states: 4.636
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 249668
+episodes: 36000
+mean 100 episode reward: -0.3666
+mean 100 episode loss: 7.039e-05
+mean 100 novel states: 5.495
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 250606
+episodes: 36100
+mean 100 episode reward: -0.3981
+mean 100 episode loss: 9.681e-05
+mean 100 novel states: 4.414
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 251575
+episodes: 36200
+mean 100 episode reward: -0.3576
+mean 100 episode loss: 4.612e-05
+mean 100 novel states: 4.394
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 252570
+episodes: 36300
+mean 100 episode reward: -0.3167
+mean 100 episode loss: 0.0001312
+mean 100 novel states: 4.859
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 253475
+episodes: 36400
+mean 100 episode reward: -0.2156
+mean 100 episode loss: 2.711e-05
+mean 100 novel states: 4.03
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 254324
+episodes: 36500
+mean 100 episode reward: -0.2983
+mean 100 episode loss: 0.00011238
+mean 100 novel states: 3.98
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 255145
+episodes: 36600
+mean 100 episode reward: -0.3179
+mean 100 episode loss: 0.00023827
+mean 100 novel states: 3.838
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 255972
+episodes: 36700
+mean 100 episode reward: -0.3281
+mean 100 episode loss: 5.186e-05
+mean 100 novel states: 4.182
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 256788
+episodes: 36800
+mean 100 episode reward: -0.2169
+mean 100 episode loss: 7.798e-05
+mean 100 novel states: 4.283
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 257440
+episodes: 36900
+mean 100 episode reward: -0.2688
+mean 100 episode loss: 0.00012292
+mean 100 novel states: 3.505
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 258225
+episodes: 37000
+mean 100 episode reward: -0.1975
+mean 100 episode loss: 7.36e-06
+mean 100 novel states: 4.141
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 259088
+episodes: 37100
+mean 100 episode reward: -0.256
+mean 100 episode loss: 9.587e-05
+mean 100 novel states: 4.677
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 260120
+episodes: 37200
+mean 100 episode reward: -0.348
+mean 100 episode loss: 5.091e-05
+mean 100 novel states: 5.152
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 260929
+episodes: 37300
+mean 100 episode reward: -0.368
+mean 100 episode loss: 4.717e-05
+mean 100 novel states: 4.192
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 261835
+episodes: 37400
+mean 100 episode reward: -0.2464
+mean 100 episode loss: 8e-05
+mean 100 novel states: 4.859
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 262828
+episodes: 37500
+mean 100 episode reward: -0.3792
+mean 100 episode loss: 2.492e-05
+mean 100 novel states: 5.01
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 263686
+episodes: 37600
+mean 100 episode reward: -0.227
+mean 100 episode loss: 8.107e-05
+mean 100 novel states: 4.505
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 264614
+episodes: 37700
+mean 100 episode reward: -0.2585
+mean 100 episode loss: 7.541e-05
+mean 100 novel states: 4.747
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 265512
+episodes: 37800
+mean 100 episode reward: -0.3377
+mean 100 episode loss: 0.00016446
+mean 100 novel states: 4.96
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 266542
+episodes: 37900
+mean 100 episode reward: -0.3175
+mean 100 episode loss: 5.916e-05
+mean 100 novel states: 5.061
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 267423
+episodes: 38000
+mean 100 episode reward: -0.2973
+mean 100 episode loss: 5.006e-05
+mean 100 novel states: 4.646
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 268259
+episodes: 38100
+mean 100 episode reward: -0.2984
+mean 100 episode loss: 4.306e-05
+mean 100 novel states: 4.162
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 269224
+episodes: 38200
+mean 100 episode reward: -0.3474
+mean 100 episode loss: 4.714e-05
+mean 100 novel states: 4.788
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 270180
+episodes: 38300
+mean 100 episode reward: -0.2979
+mean 100 episode loss: 0.0001475
+mean 100 novel states: 4.838
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 271003
+episodes: 38400
+mean 100 episode reward: -0.3072
+mean 100 episode loss: 9.425e-05
+mean 100 novel states: 4.192
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 271739
+episodes: 38500
+mean 100 episode reward: -0.3085
+mean 100 episode loss: 0.00011051
+mean 100 novel states: 3.697
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 272461
+episodes: 38600
+mean 100 episode reward: -0.2586
+mean 100 episode loss: 0.00011975
+mean 100 novel states: 3.758
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 273274
+episodes: 38700
+mean 100 episode reward: -0.3083
+mean 100 episode loss: 0.00010868
+mean 100 novel states: 3.949
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 274209
+episodes: 38800
+mean 100 episode reward: -0.238
+mean 100 episode loss: 5.43e-05
+mean 100 novel states: 4.697
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 275067
+episodes: 38900
+mean 100 episode reward: -0.2473
+mean 100 episode loss: 0.00013623
+mean 100 novel states: 4.273
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 276024
+episodes: 39000
+mean 100 episode reward: -0.2369
+mean 100 episode loss: 6.728e-05
+mean 100 novel states: 5.141
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 276934
+episodes: 39100
+mean 100 episode reward: -0.2373
+mean 100 episode loss: 8.954e-05
+mean 100 novel states: 4.384
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 277821
+episodes: 39200
+mean 100 episode reward: -0.2863
+mean 100 episode loss: 7.655e-05
+mean 100 novel states: 4.717
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 278601
+episodes: 39300
+mean 100 episode reward: -0.2468
+mean 100 episode loss: 0.00011149
+mean 100 novel states: 3.848
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 279377
+episodes: 39400
+mean 100 episode reward: -0.3786
+mean 100 episode loss: 6.95e-05
+mean 100 novel states: 3.97
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 280320
+episodes: 39500
+mean 100 episode reward: -0.3486
+mean 100 episode loss: 8.595e-05
+mean 100 novel states: 4.788
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 281210
+episodes: 39600
+mean 100 episode reward: -0.2974
+mean 100 episode loss: 9.971e-05
+mean 100 novel states: 4.596
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 282024
+episodes: 39700
+mean 100 episode reward: -0.3686
+mean 100 episode loss: 6.966e-05
+mean 100 novel states: 3.919
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 282874
+episodes: 39800
+mean 100 episode reward: -0.2874
+mean 100 episode loss: 4.691e-05
+mean 100 novel states: 4.424
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 283726
+episodes: 39900
+mean 100 episode reward: -0.2694
+mean 100 episode loss: 5.993e-05
+mean 100 novel states: 4.101
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 284669
+episodes: 40000
+mean 100 episode reward: -0.3184
+mean 100 episode loss: 0.0001028
+mean 100 novel states: 4.97
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 285518
+episodes: 40100
+mean 100 episode reward: -0.3687
+mean 100 episode loss: 0.00010189
+mean 100 novel states: 4.485
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 286268
+episodes: 40200
+mean 100 episode reward: -0.3089
+mean 100 episode loss: 9.335e-05
+mean 100 novel states: 4.01
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 287202
+episodes: 40300
+mean 100 episode reward: -0.3075
+mean 100 episode loss: 6.592e-05
+mean 100 novel states: 4.475
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 288055
+episodes: 40400
+mean 100 episode reward: -0.2873
+mean 100 episode loss: 8.336e-05
+mean 100 novel states: 4.525
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 288860
+episodes: 40500
+mean 100 episode reward: -0.3478
+mean 100 episode loss: 6.242e-05
+mean 100 novel states: 4.434
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 289772
+episodes: 40600
+mean 100 episode reward: -0.3489
+mean 100 episode loss: 0.0001577
+mean 100 novel states: 4.808
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 290617
+episodes: 40700
+mean 100 episode reward: -0.3568
+mean 100 episode loss: 0.0001368
+mean 100 novel states: 4.242
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 291215
+episodes: 40800
+mean 100 episode reward: -0.2686
+mean 100 episode loss: 9.587e-05
+mean 100 novel states: 2.899
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 292035
+episodes: 40900
+mean 100 episode reward: -0.2566
+mean 100 episode loss: 7.329e-05
+mean 100 novel states: 3.677
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 292889
+episodes: 41000
+mean 100 episode reward: -0.3084
+mean 100 episode loss: 0.00013224
+mean 100 novel states: 4.465
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 293711
+episodes: 41100
+mean 100 episode reward: -0.2784
+mean 100 episode loss: 7.457e-05
+mean 100 novel states: 4.071
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 294624
+episodes: 41200
+mean 100 episode reward: -0.3588
+mean 100 episode loss: 9.535e-05
+mean 100 novel states: 4.192
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 295498
+episodes: 41300
+mean 100 episode reward: -0.3383
+mean 100 episode loss: 6.427e-05
+mean 100 novel states: 4.778
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 296346
+episodes: 41400
+mean 100 episode reward: -0.2373
+mean 100 episode loss: 0.00011819
+mean 100 novel states: 4.576
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 297175
+episodes: 41500
+mean 100 episode reward: -0.3077
+mean 100 episode loss: 4.241e-05
+mean 100 novel states: 4.374
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 298112
+episodes: 41600
+mean 100 episode reward: -0.348
+mean 100 episode loss: 0.00010755
+mean 100 novel states: 5.121
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 299013
+episodes: 41700
+mean 100 episode reward: -0.2879
+mean 100 episode loss: 0.00011298
+mean 100 novel states: 4.677
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 299805
+episodes: 41800
+mean 100 episode reward: -0.2263
+mean 100 episode loss: 6.3e-05
+mean 100 novel states: 4.071
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 300741
+episodes: 41900
+mean 100 episode reward: -0.3064
+mean 100 episode loss: 8.561e-05
+mean 100 novel states: 4.737
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 301609
+episodes: 42000
+mean 100 episode reward: -0.1967
+mean 100 episode loss: 0.00016141
+mean 100 novel states: 4.394
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 302382
+episodes: 42100
+mean 100 episode reward: -0.2778
+mean 100 episode loss: 0.00012076
+mean 100 novel states: 4.091
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 303259
+episodes: 42200
+mean 100 episode reward: -0.2574
+mean 100 episode loss: 0.00018265
+mean 100 novel states: 4.343
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 304117
+episodes: 42300
+mean 100 episode reward: -0.3174
+mean 100 episode loss: 0.00016068
+mean 100 novel states: 4.566
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 304992
+episodes: 42400
+mean 100 episode reward: -0.3181
+mean 100 episode loss: 0.00010674
+mean 100 novel states: 4.364
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 305948
+episodes: 42500
+mean 100 episode reward: -0.3368
+mean 100 episode loss: 0.00010487
+mean 100 novel states: 4.131
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 306827
+episodes: 42600
+mean 100 episode reward: -0.3581
+mean 100 episode loss: 8.553e-05
+mean 100 novel states: 4.687
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 307613
+episodes: 42700
+mean 100 episode reward: -0.289
+mean 100 episode loss: 7.285e-05
+mean 100 novel states: 4.242
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 308380
+episodes: 42800
+mean 100 episode reward: -0.1987
+mean 100 episode loss: 0.0001853
+mean 100 novel states: 3.707
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 309132
+episodes: 42900
+mean 100 episode reward: -0.2075
+mean 100 episode loss: 9.878e-05
+mean 100 novel states: 3.879
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 310028
+episodes: 43000
+mean 100 episode reward: -0.3483
+mean 100 episode loss: 0.00013042
+mean 100 novel states: 4.051
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 310923
+episodes: 43100
+mean 100 episode reward: -0.4186
+mean 100 episode loss: 0.00015357
+mean 100 novel states: 4.333
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 311730
+episodes: 43200
+mean 100 episode reward: -0.2875
+mean 100 episode loss: 5.887e-05
+mean 100 novel states: 4.343
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 312601
+episodes: 43300
+mean 100 episode reward: -0.3074
+mean 100 episode loss: 0.00010686
+mean 100 novel states: 4.586
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 313464
+episodes: 43400
+mean 100 episode reward: -0.2673
+mean 100 episode loss: 0.00010881
+mean 100 novel states: 4.303
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 314473
+episodes: 43500
+mean 100 episode reward: -0.2965
+mean 100 episode loss: 6.827e-05
+mean 100 novel states: 5.152
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 315320
+episodes: 43600
+mean 100 episode reward: -0.2373
+mean 100 episode loss: 2.447e-05
+mean 100 novel states: 4.283
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 316158
+episodes: 43700
+mean 100 episode reward: -0.3177
+mean 100 episode loss: 6.34e-06
+mean 100 novel states: 4.455
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 316987
+episodes: 43800
+mean 100 episode reward: -0.2472
+mean 100 episode loss: 6.987e-05
+mean 100 novel states: 4.485
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 317681
+episodes: 43900
+mean 100 episode reward: -0.2981
+mean 100 episode loss: 5.091e-05
+mean 100 novel states: 3.808
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 318635
+episodes: 44000
+mean 100 episode reward: -0.2559
+mean 100 episode loss: 2.922e-05
+mean 100 novel states: 4.808
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 319513
+episodes: 44100
+mean 100 episode reward: -0.2468
+mean 100 episode loss: 0.00017784
+mean 100 novel states: 4.586
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 320252
+episodes: 44200
+mean 100 episode reward: -0.1768
+mean 100 episode loss: 0.00010795
+mean 100 novel states: 4.101
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 321117
+episodes: 44300
+mean 100 episode reward: -0.1779
+mean 100 episode loss: 3.57e-05
+mean 100 novel states: 4.495
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 321951
+episodes: 44400
+mean 100 episode reward: -0.2574
+mean 100 episode loss: 7.769e-05
+mean 100 novel states: 4.323
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 322866
+episodes: 44500
+mean 100 episode reward: -0.2472
+mean 100 episode loss: 7.68e-05
+mean 100 novel states: 4.404
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 323730
+episodes: 44600
+mean 100 episode reward: -0.2683
+mean 100 episode loss: 0.00011089
+mean 100 novel states: 4.495
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 324541
+episodes: 44700
+mean 100 episode reward: -0.2992
+mean 100 episode loss: 7.14e-06
+mean 100 novel states: 4.222
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 325388
+episodes: 44800
+mean 100 episode reward: -0.2774
+mean 100 episode loss: 9.753e-05
+mean 100 novel states: 4.424
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 326173
+episodes: 44900
+mean 100 episode reward: -0.2278
+mean 100 episode loss: 0.00010508
+mean 100 novel states: 4.475
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 326988
+episodes: 45000
+mean 100 episode reward: -0.3475
+mean 100 episode loss: 9.187e-05
+mean 100 novel states: 4.293
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 327754
+episodes: 45100
+mean 100 episode reward: -0.298
+mean 100 episode loss: 0.00013286
+mean 100 novel states: 4.02
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 328463
+episodes: 45200
+mean 100 episode reward: -0.3689
+mean 100 episode loss: 8.329e-05
+mean 100 novel states: 3.889
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 329271
+episodes: 45300
+mean 100 episode reward: -0.3073
+mean 100 episode loss: 4.017e-05
+mean 100 novel states: 4.051
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 330156
+episodes: 45400
+mean 100 episode reward: -0.3375
+mean 100 episode loss: 4.099e-05
+mean 100 novel states: 4.556
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 331073
+episodes: 45500
+mean 100 episode reward: -0.3972
+mean 100 episode loss: 7.562e-05
+mean 100 novel states: 5.081
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 332028
+episodes: 45600
+mean 100 episode reward: -0.2367
+mean 100 episode loss: 9.784e-05
+mean 100 novel states: 4.919
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 332938
+episodes: 45700
+mean 100 episode reward: -0.3785
+mean 100 episode loss: 6.966e-05
+mean 100 novel states: 4.848
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 333732
+episodes: 45800
+mean 100 episode reward: -0.2981
+mean 100 episode loss: 3.659e-05
+mean 100 novel states: 3.96
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 334751
+episodes: 45900
+mean 100 episode reward: -0.3172
+mean 100 episode loss: 6.978e-05
+mean 100 novel states: 5.182
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 335464
+episodes: 46000
+mean 100 episode reward: -0.2488
+mean 100 episode loss: 0.00011927
+mean 100 novel states: 3.747
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 336108
+episodes: 46100
+mean 100 episode reward: -0.2378
+mean 100 episode loss: 0.00018322
+mean 100 novel states: 3.01
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 336768
+episodes: 46200
+mean 100 episode reward: -0.2483
+mean 100 episode loss: 3.645e-05
+mean 100 novel states: 3.566
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 337367
+episodes: 46300
+mean 100 episode reward: -0.238
+mean 100 episode loss: 0.00011412
+mean 100 novel states: 3.293
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 338039
+episodes: 46400
+mean 100 episode reward: -0.2581
+mean 100 episode loss: 9.972e-05
+mean 100 novel states: 3.606
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 338735
+episodes: 46500
+mean 100 episode reward: -0.1975
+mean 100 episode loss: 0.00012723
+mean 100 novel states: 3.626
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 339433
+episodes: 46600
+mean 100 episode reward: -0.2371
+mean 100 episode loss: 7.875e-05
+mean 100 novel states: 3.737
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 340087
+episodes: 46700
+mean 100 episode reward: -0.2376
+mean 100 episode loss: 6.511e-05
+mean 100 novel states: 3.646
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 340811
+episodes: 46800
+mean 100 episode reward: -0.3985
+mean 100 episode loss: 0.00010746
+mean 100 novel states: 4.071
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 341557
+episodes: 46900
+mean 100 episode reward: -0.2884
+mean 100 episode loss: 7.536e-05
+mean 100 novel states: 3.828
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 342255
+episodes: 47000
+mean 100 episode reward: -0.2571
+mean 100 episode loss: 0.00011997
+mean 100 novel states: 3.99
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 343069
+episodes: 47100
+mean 100 episode reward: -0.2979
+mean 100 episode loss: 0.00011647
+mean 100 novel states: 4.465
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 343771
+episodes: 47200
+mean 100 episode reward: -0.3794
+mean 100 episode loss: 0.00010539
+mean 100 novel states: 4.061
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 344568
+episodes: 47300
+mean 100 episode reward: -0.2973
+mean 100 episode loss: 0.00017198
+mean 100 novel states: 4.495
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 345335
+episodes: 47400
+mean 100 episode reward: -0.267
+mean 100 episode loss: 0.00016014
+mean 100 novel states: 3.848
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 346137
+episodes: 47500
+mean 100 episode reward: -0.3181
+mean 100 episode loss: 0.00012609
+mean 100 novel states: 3.778
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 347017
+episodes: 47600
+mean 100 episode reward: -0.2569
+mean 100 episode loss: 4.441e-05
+mean 100 novel states: 3.646
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 347789
+episodes: 47700
+mean 100 episode reward: -0.3492
+mean 100 episode loss: 9.551e-05
+mean 100 novel states: 4.121
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 348628
+episodes: 47800
+mean 100 episode reward: -0.3371
+mean 100 episode loss: 0.00011653
+mean 100 novel states: 4.293
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 349391
+episodes: 47900
+mean 100 episode reward: -0.3077
+mean 100 episode loss: 7.474e-05
+mean 100 novel states: 3.98
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 350120
+episodes: 48000
+mean 100 episode reward: -0.289
+mean 100 episode loss: 4.928e-05
+mean 100 novel states: 3.869
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 350946
+episodes: 48100
+mean 100 episode reward: -0.2677
+mean 100 episode loss: 0.00014655
+mean 100 novel states: 4.253
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 351775
+episodes: 48200
+mean 100 episode reward: -0.359
+mean 100 episode loss: 0.00010958
+mean 100 novel states: 4.111
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 352581
+episodes: 48300
+mean 100 episode reward: -0.3167
+mean 100 episode loss: 9.011e-05
+mean 100 novel states: 3.909
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 353351
+episodes: 48400
+mean 100 episode reward: -0.2282
+mean 100 episode loss: 8.834e-05
+mean 100 novel states: 3.929
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 354181
+episodes: 48500
+mean 100 episode reward: -0.2365
+mean 100 episode loss: 0.00011459
+mean 100 novel states: 4.03
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 354824
+episodes: 48600
+mean 100 episode reward: -0.249
+mean 100 episode loss: 4.989e-05
+mean 100 novel states: 3.414
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 355457
+episodes: 48700
+mean 100 episode reward: -0.2874
+mean 100 episode loss: 6.464e-05
+mean 100 novel states: 3.212
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 356160
+episodes: 48800
+mean 100 episode reward: -0.2679
+mean 100 episode loss: 5.646e-05
+mean 100 novel states: 3.121
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 356916
+episodes: 48900
+mean 100 episode reward: -0.3084
+mean 100 episode loss: 3.482e-05
+mean 100 novel states: 3.465
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 357716
+episodes: 49000
+mean 100 episode reward: -0.247
+mean 100 episode loss: 8.248e-05
+mean 100 novel states: 3.646
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 358515
+episodes: 49100
+mean 100 episode reward: -0.2373
+mean 100 episode loss: 0.00010131
+mean 100 novel states: 3.717
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 359168
+episodes: 49200
+mean 100 episode reward: -0.2588
+mean 100 episode loss: 0.00013572
+mean 100 novel states: 3.03
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 359884
+episodes: 49300
+mean 100 episode reward: -0.2784
+mean 100 episode loss: 0.00014908
+mean 100 novel states: 2.949
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 360675
+episodes: 49400
+mean 100 episode reward: -0.2767
+mean 100 episode loss: 1.721e-05
+mean 100 novel states: 3.646
+% time spent exploring: 9
+********************************************************
+********************************************************
+steps: 361348
+episodes: 49500
+mean 100 episode reward: -0.2783
+mean 100 episode loss: 6.499e-05
+mean 100 novel states: 3.081
+% time spent exploring: 9
+********************************************************

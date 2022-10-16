@@ -14,24 +14,22 @@ import wandb
 from collections import deque
 
 # 1. Start a new run
-wandb.init(project="dqn")
-# wandb.init(project="dqn", mode="disabled")
+# wandb.init(project="dqn")
+wandb.init(project="dqn", mode="disabled")
 
 hyper_params = {
     "seed": 42,  # which seed to use
     "env": "MiniHack-ExploreMaze-Easy-Mapped-v0",  # name of the game
     "replay-buffer-size": int(1e6),  # replay buffer size
-    "learning-rate": 1e-5,  # learning rate for Adam optimizer
+    "learning-rate": 1e-4,  # learning rate for Adam optimizer
     "discount-factor": 0.99,  # discount factor
     "num-steps": int(1e7),  # total number of steps to run the environment for
-    "num-episodes":
-    100000,  # total number of episodes to run the environment for
+    "num-episodes": 1000000,  # total number of episodes to run the environment for
     "batch-size": 32,  # number of transitions to optimize at the same time
     "learning-starts": 10000,  # number of steps before learning starts
     "learning-freq": 1,  # number of iterations between every optimization step
     "use-double-dqn": True,  # use double deep Q-learning
-    "target-update-freq":
-    10000,  # number of iterations between every target network update
+    "target-update-freq": 5000,  # number of iterations between every target network update
     "eps-start": 1,  # e-greedy start threshold
     "eps-end": 0.1,  # e-greedy end threshold
     "eps-fraction": 0.01,  # fraction of num-steps over which to decay epsilon
@@ -158,9 +156,9 @@ try:
     agent.memory._storage = checkpoint['storage']
     agent.memory._next_idx = checkpoint['next_idx']
 
-    print(f'Loaded model from step {t} and episode {num_episodes}')
+    print(f'Loaded model from step {t} and episode {num_episodes}', flush=True)
 except:
-    print('No saved model to load. Starting new training run.')
+    print('No saved model to load. Starting new training run.', flush=True)
     agent = DQNAgent(
         env.observation_space,
         env.action_space,
@@ -207,8 +205,8 @@ while t < hyper_params['num-steps'] and num_episodes < hyper_params[
         idle_count = 0
 
     # end the episode if the agent has been idle for 1 step
-    if idle_count > 1:
-        done = True
+    # if idle_count > 1:
+    #     done = True
 
     # add state, action, reward, next_state, float(done) to replay buffer - cast done to float
     agent.memory.add(state, action, reward, next_state, float(done))
@@ -257,14 +255,14 @@ while t < hyper_params['num-steps'] and num_episodes < hyper_params[
         mean_100ep_reward = round(np.mean(list(episode_rewards)[-101:-1]), 4)
         mean_100ep_loss = round(np.mean(list(episode_loss)[-101:-1]), 8)
         mean_100ep_states = round(np.mean(list(episode_novel)[-101:-1]), 3)
-        print("********************************************************")
-        print("steps: {}".format(t))
-        print("episodes: {}".format(num_episodes))
-        print("mean 100 episode reward: {}".format(mean_100ep_reward))
-        print("mean 100 episode loss: {}".format(mean_100ep_loss))
-        print("mean 100 novel states: {}".format(mean_100ep_states))
-        print("% time spent exploring: {}".format(int(100 * eps_threshold)))
-        print("********************************************************")
+        print("********************************************************", flush=True)
+        print("steps: {}".format(t), flush=True)
+        print("episodes: {}".format(num_episodes), flush=True)
+        print("mean 100 episode reward: {}".format(mean_100ep_reward), flush=True)
+        print("mean 100 episode loss: {}".format(mean_100ep_loss), flush=True)
+        print("mean 100 novel states: {}".format(mean_100ep_states), flush=True)
+        print("% time spent exploring: {}".format(int(100 * eps_threshold)), flush=True)
+        print("********************************************************", flush=True)
 
     if (done and hyper_params["save-freq"] is not None
             and num_episodes % hyper_params["save-freq"] == 0):

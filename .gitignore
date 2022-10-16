@@ -1,9 +1,8 @@
-models/*
+models
 .vscode
 code
 *__pycache__*
 wandb
 */*.pth
 env
-experiments
 venv
