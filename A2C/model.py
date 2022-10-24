@@ -9,11 +9,11 @@ class ActorCritic(nn.Module):
         n_actions = action_space.n
 
         self.features = nn.Sequential(
-            nn.Conv2d(observation_shape[0], 32, 3, padding=1),
+            nn.Conv2d(observation_shape[0], 16, 3, padding=1),
             nn.ReLU(),
-            nn.Conv2d(32, 16, 3, padding=1),
+            nn.Conv2d(16, 16, 3, padding=1),
             nn.ReLU(),
-            nn.Conv2d(16, 8, 3, padding=1),
+            nn.Conv2d(16, n_actions, 3, padding=1),
             nn.ReLU()
         )
 
