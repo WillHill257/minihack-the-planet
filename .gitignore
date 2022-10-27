@@ -5,3 +5,4 @@ code
 wandb
 logs/
 *.pth
+*.db*
