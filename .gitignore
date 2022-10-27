@@ -6,3 +6,4 @@ wandb
 logs/
 *.pth
 *.db*
+model.zip
