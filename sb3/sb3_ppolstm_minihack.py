@@ -1,3 +1,4 @@
+from pydoc import cli
 import gym
 import minihack
 import time
@@ -15,6 +16,31 @@ import torch
 from torch import nn
 
 
+def evaluate_lstm(model, env_id):
+    num_envs = 1
+    env = make_vec_env(env_id, n_envs=num_envs, vec_env_cls=DummyVecEnv)
+    obs = env.reset()
+
+    # cell and hidden state of the LSTM
+    lstm_states = None
+    # Episode start signals are used to reset the lstm states
+    episode_starts = np.ones((num_envs, ), dtype=bool)
+    for _ in range(2000):
+        action, lstm_states = model.predict(obs,
+                                            state=lstm_states,
+                                            episode_start=episode_starts,
+                                            deterministic=True)
+
+        obs, rewards, dones, info = env.step(action)
+
+        episode_starts = dones
+        env.render()
+
+        if dones:
+            time.sleep(1)
+            obs = env.reset()
+
+
 class MiniHackExtractor(BaseFeaturesExtractor):
 
     def __init__(self, observation_space: gym.spaces.Dict):
@@ -22,7 +48,7 @@ class MiniHackExtractor(BaseFeaturesExtractor):
         # so put something dummy for now. PyTorch requires calling
         # nn.Module.__init__ before adding modules
         super(MiniHackExtractor, self).__init__(observation_space,
-                                                      features_dim=1)
+                                                features_dim=1)
 
         extractors = {}
 
@@ -108,48 +134,37 @@ if __name__ == "__main__":
         'penalty_step': -0.1
     }
 
-    num_cpu = 4  # Number of processes to use
+    num_cpu = 12  # Number of processes to use
     # Create the vectorized environment
-    env = SubprocVecEnv(
-        [make_env(env_id, i, args=args) for i in range(num_cpu)])
+    env = DummyVecEnv([make_env(env_id, i, args=args) for i in range(num_cpu)])
 
     # wrap env with a VecMonitor
     env = VecMonitor(env)
 
-    policy_kwargs = dict(activation_fn=torch.nn.ReLU,
-                         features_extractor_class=MiniHackExtractor,
-                         shared_lstm=True,
-                         enable_critic_lstm=False,
-                         lstm_hidden_size=32,
-                         net_arch=[128])
-
     model = RecurrentPPO("MultiInputLstmPolicy",
-                env,
-                learning_rate=1e-4,
-                policy_kwargs=policy_kwargs,
-                verbose=1)
+                         env,
+                         learning_rate=0.0013,
+                         verbose=1,
+                         gamma=0.9698,
+                         ent_coef=0.000178,
+                         max_grad_norm=1.8557,
+                         n_epochs=1,
+                         batch_size=32,
+                         clip_range=0.1,
+                         n_steps=32,
+                         gae_lambda=0.992,
+                         policy_kwargs=dict(
+                             features_extractor_class=MiniHackExtractor,
+                             ortho_init=True,
+                             lstm_hidden_size=64,
+                             net_arch=[{
+                                 "pi": [64, 64],
+                                 "vf": [64, 64]
+                             }]))
 
     try:
         model.learn(total_timesteps=int(2e5))
     except KeyboardInterrupt:
         pass
 
-    env = DummyVecEnv([make_env(env_id, 0, args=args)])
-    obs = env.reset()
-
-    # cell and hidden state of the LSTM
-    lstm_states = None
-    num_envs = 1
-    # Episode start signals are used to reset the lstm states
-    episode_starts = np.ones((num_envs,), dtype=bool)
-    for _ in range(2000):
-        action, lstm_states = model.predict(obs, state=lstm_states, episode_start=episode_starts, deterministic=True)
-        
-        obs, rewards, dones, info = env.step(action)
-        
-        episode_starts = dones
-        env.render()
-
-        time.sleep(0.1)
-        if dones:
-            obs = env.reset()
+    evaluate_lstm(model, env_id)
