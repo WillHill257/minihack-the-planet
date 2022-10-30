@@ -1,4 +1,3 @@
-
 import gym
 import minihack
 import time
@@ -11,13 +10,14 @@ from stable_baselines3.common.utils import set_random_seed
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from sb3_contrib import RecurrentPPO
+from torch.optim import RMSprop
 
 import torch
 from torch import nn
 
 
 def evaluate_lstm(model, eval_env):
-    
+
     obs = eval_env.reset()
 
     # cell and hidden state of the LSTM
@@ -40,6 +40,7 @@ def evaluate_lstm(model, eval_env):
             time.sleep(1)
             obs = eval_env.reset()
 
+
 class SaveCallback(BaseCallback):
     """
     Callback for saving a model (the check is done every ``check_freq`` steps)
@@ -58,9 +59,10 @@ class SaveCallback(BaseCallback):
     def _on_step(self) -> bool:
         if self.n_calls % self.check_freq == 0:
             print(f'Saving model at step {self.num_timesteps}')
-            # self.model.save('model')
+            self.model.save('model')
 
         return True
+
 
 class MiniHackExtractor(BaseFeaturesExtractor):
 
@@ -70,6 +72,9 @@ class MiniHackExtractor(BaseFeaturesExtractor):
         # nn.Module.__init__ before adding modules
         super(MiniHackExtractor, self).__init__(observation_space,
                                                 features_dim=1)
+        self.embedding_size = 32
+
+        self.embed = nn.Embedding(128, self.embedding_size)
 
         extractors = {}
 
@@ -77,17 +82,12 @@ class MiniHackExtractor(BaseFeaturesExtractor):
         # We need to know size of the output of this extractor,
         # so go over all the spaces and compute output feature sizes
         for key, subspace in observation_space.spaces.items():
-            n_input_channels = subspace.shape[0]
-
-            if len(subspace.shape) < 4:
-                # This is a 2D image, so expand the dimensions
-                n_input_channels = 1
 
             if key == 'chars':
                 # We will just downsample one channel of the image by 4x4 and flatten.
                 # Assume the image is single-channel (subspace.shape[0] == 0)
                 extractors[key] = nn.Sequential(
-                    nn.Conv2d(n_input_channels, 16, 3, padding=1),
+                    nn.Conv2d(self.embedding_size, 16, 3, padding=1),
                     nn.ReLU(),
                     nn.Conv2d(16, 16, 3, padding=1),
                     nn.ReLU(),
@@ -99,7 +99,7 @@ class MiniHackExtractor(BaseFeaturesExtractor):
             elif key == 'chars_crop':
                 # Run through a simple MLP
                 extractors[key] = nn.Sequential(
-                    nn.Conv2d(n_input_channels, 16, 3, padding=1),
+                    nn.Conv2d(self.embedding_size, 16, 3, padding=1),
                     nn.ReLU(),
                     nn.Conv2d(16, 16, 3, padding=1),
                     nn.ReLU(),
@@ -111,8 +111,11 @@ class MiniHackExtractor(BaseFeaturesExtractor):
 
         self.extractors = nn.ModuleDict(extractors)
 
+        self.fc1 = nn.Linear(total_concat_size, 512)
+        self.fc2 = nn.Linear(512, 512)
+
         # Update the features dim manually
-        self._features_dim = total_concat_size
+        self._features_dim = 512
 
     def forward(self, observations) -> torch.Tensor:
         encoded_tensor_list = []
@@ -121,11 +124,17 @@ class MiniHackExtractor(BaseFeaturesExtractor):
         for key, extractor in self.extractors.items():
             # Add a channel to the 2d observation
             if len(observations[key].shape) < 4:
-                observations[key] = observations[key].unsqueeze(1)
-            encoded_tensor_list.append(extractor(observations[key] / 128.0))
-        # Return a (B, self._features_dim) PyTorch tensor, where B is batch dimension.
-        return torch.cat(encoded_tensor_list, dim=1)
+                observations[key] = observations[key]
+            x = self.embed(observations[key].to(torch.int32))
+            x = x.view(-1, self.embedding_size, x.shape[1], x.shape[2])
+            x = extractor(x)
 
+            encoded_tensor_list.append(x)
+        # Return a (B, self._features_dim) PyTorch tensor, where B is batch dimension.
+        x = torch.cat(encoded_tensor_list, dim=1)
+        x = self.fc1(x)
+        x = self.fc2(x)
+        return x
 
 def make_env(env_id, rank, seed=0, args={}):
     """
@@ -139,26 +148,34 @@ def make_env(env_id, rank, seed=0, args={}):
 
     def _init():
         env = gym.make(env_id, **args)
-        env._max_episode_steps = 30
+        # env._max_episode_steps = 30
         env.seed(seed + rank)
         return env
 
     set_random_seed(seed)
     return _init
 
+def go_right_reward(env, prev, curr, action):
+    # Get the location of the @
+    prev_loc = np.where(curr == ord('@'))
+    # Reward the player for going right
+    
+
 def make_dummy_env(env_id, num_envs):
     args = {
-            'observation_keys': ['chars', 'chars_crop'],
-            'penalty_time': -0.005,
-            'penalty_step': -0.1
-        }
+        'observation_keys': ['chars', 'chars_crop'],
+        'penalty_time': -0.005,
+        'penalty_step': -0.1
+    }
 
     # Create the vectorized environment
-    env = DummyVecEnv([make_env(env_id, i, args=args) for i in range(num_envs)])
+    env = DummyVecEnv(
+        [make_env(env_id, i, args=args) for i in range(num_envs)])
     return env
 
+
 if __name__ == "__main__":
-    env_id = "MiniHack-River-v0"
+    env_id = "MiniHack-CorridorBattle-v0"
     n_envs = 12
     env = make_dummy_env(env_id, n_envs)
 
@@ -167,29 +184,33 @@ if __name__ == "__main__":
 
     model = RecurrentPPO("MultiInputLstmPolicy",
                          env,
-                         learning_rate=5.392404218017658e-05,
                          verbose=1,
-                         gamma=0.999,
-                         ent_coef=3.0530546078783706e-07,
-                         max_grad_norm=0.8088001457186847,
-                         n_epochs=10,
-                         batch_size=256,
-                         clip_range=0.3,
-                         vf_coef=0.00011087766732100762,
+                         learning_rate=0.0002,
                          n_steps=128,
-                         gae_lambda=0.9971223067459642,
+                         batch_size=128,
+                         n_epochs=10,
+                         gamma=0.99,
+                         gae_lambda=0.95,
+                         clip_range=0.2,
+                         clip_range_vf=None,
+                         normalize_advantage=True,
+                         ent_coef=0.000001,
+                         vf_coef=0.5,
+                         max_grad_norm=40,
                          policy_kwargs=dict(
                              features_extractor_class=MiniHackExtractor,
                              ortho_init=True,
-                             activation_fn= nn.ELU,
+                             optimizer_class=RMSprop,
+                             optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
+                             activation_fn=nn.ReLU,
                              enable_critic_lstm=False,
-                             lstm_hidden_size=256,
-                             net_arch=[{'pi': [64, 64], 'vf': [64, 64]}]))
+                             lstm_hidden_size=128,
+                             net_arch=[512]))
 
     save_callback = SaveCallback(max(5000 // n_envs, 1))
 
     try:
-        model.learn(total_timesteps=int(10000), callback=save_callback)
+        model.learn(total_timesteps=int(100_000), callback=save_callback)
     except KeyboardInterrupt:
         pass
 
