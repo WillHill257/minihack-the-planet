@@ -2,7 +2,7 @@ import gym
 import minihack
 import time
 import argparse
-
+import os
 import numpy as np
 
 from typing import Any, Dict
@@ -199,11 +199,11 @@ def go_right_bonus(env, prev, action, curr):
 def make_dummy_env(num_envs, cls=DummyVecEnv):
 
     reward_manager = RewardManager()
-    reward_manager.add_wield_event("death", reward=1)
-    reward_manager.add_wield_event("cold", reward=1)
-    reward_manager.add_wield_event("frost horn", reward=1)
-    reward_manager.add_wear_event("levitation", reward=1)
-    reward_manager.add_wear_event("levitation boots", reward=1)
+    reward_manager.add_wield_event("death", reward=5)
+    reward_manager.add_wield_event("cold", reward=5)
+    reward_manager.add_wield_event("frost horn", reward=5)
+    reward_manager.add_wear_event("levitation", reward=5)
+    reward_manager.add_wear_event("levitation boots", reward=5)
     reward_manager.add_kill_event("Minotaur", reward=10, terminal_required=True)
     reward_manager.add_custom_reward_fn(go_right_bonus)
 
@@ -255,8 +255,10 @@ def init_argparse() -> argparse.ArgumentParser:
                         default=False,
                         action="store_true",
                         help="Evaluation mode")
+    
+    parser.add_argument('-f','--fresh', default=False, action='store_true', help='Start fresh')
 
-    parser.add_argument("-f", "--save_frequency", type=int, default=5000)
+    parser.add_argument("-r", "--save_frequency", type=int, default=5000)
 
     return parser
 
@@ -273,9 +275,9 @@ if __name__ == "__main__":
             model,
             eval_env,
             render=True,
-            callback=lambda _locals, _globals: time.sleep(0.1),
+            callback=lambda _locals, _globals: time.sleep(1),
             # callback=grab_screens,
-            n_eval_episodes=1,
+            n_eval_episodes=10,
             deterministic=True,
         )
         exit()
@@ -285,32 +287,41 @@ if __name__ == "__main__":
     # wrap env with a VecMonitor
     env = VecMonitor(env)
 
-    model = RecurrentPPO("MultiInputLstmPolicy",
-                         env,
-                         verbose=1,
-                         tensorboard_log="./minihack_tensorboard/",
-                         learning_rate=0.0002,
-                         n_steps=512,
-                         batch_size=256,
-                         n_epochs=10,
-                         gamma=0.99,
-                         gae_lambda=0.95,
-                         clip_range=0.2,
-                         clip_range_vf=None,
-                         normalize_advantage=True,
-                         ent_coef=0.000001,
-                         vf_coef=0.5,
-                         max_grad_norm=40,
-                         policy_kwargs=dict(
-                             features_extractor_class=MiniHackExtractor,
-                             ortho_init=False,
-                             optimizer_class=RMSprop,
-                             optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
-                             activation_fn=nn.ReLU,
-                             enable_critic_lstm=True,
-                             lstm_hidden_size=128,
-                             net_arch=[512],
-                         ))
+    mode = None
+
+    # Check if the model.zip file exists in the current directory
+    if os.path.exists("model.zip") and not args.fresh:
+        print("Loading model.zip")
+        model = RecurrentPPO.load("model")
+        # Add the env to the model
+        model.set_env(env)
+    else :
+        model = RecurrentPPO("MultiInputLstmPolicy",
+                            env,
+                            verbose=1,
+                            tensorboard_log="./minihack_tensorboard/",
+                            learning_rate=0.0002,
+                            n_steps=512,
+                            batch_size=256,
+                            n_epochs=10,
+                            gamma=0.99,
+                            gae_lambda=0.95,
+                            clip_range=0.2,
+                            clip_range_vf=None,
+                            normalize_advantage=True,
+                            ent_coef=0.000001,
+                            vf_coef=0.5,
+                            max_grad_norm=40,
+                            policy_kwargs=dict(
+                                features_extractor_class=MiniHackExtractor,
+                                ortho_init=False,
+                                optimizer_class=RMSprop,
+                                optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
+                                activation_fn=nn.ReLU,
+                                enable_critic_lstm=True,
+                                lstm_hidden_size=128,
+                                net_arch=[512],
+                            ))
 
     save_callback = SaveCallback(max(args.save_frequency // args.n_envs, 1))
     eval_env = make_dummy_env(1)
@@ -328,7 +339,7 @@ if __name__ == "__main__":
         model,
         eval_env,
         render=True,
-        callback=lambda _locals, _globals: time.sleep(0.1),
+        callback=lambda _locals, _globals: time.sleep(1),
         n_eval_episodes=1,
         deterministic=True,
     )
