@@ -73,6 +73,10 @@ class MiniHackExtractor(BaseFeaturesExtractor):
                     nn.ReLU(),
                     nn.Conv2d(16, 16, 3, padding=1),
                     nn.ReLU(),
+                    nn.Conv2d(16, 16, 3, padding=1),
+                    nn.ReLU(),
+                    nn.Conv2d(16, 16, 3, padding=1),
+                    nn.ReLU(),
                     nn.Flatten(),
                 )
                 total_concat_size += 16 * 21 * 79
@@ -80,6 +84,10 @@ class MiniHackExtractor(BaseFeaturesExtractor):
                 # Run through a simple MLP
                 extractors[key] = nn.Sequential(
                     nn.Conv2d(self.embedding_size, 16, 3, padding=1),
+                    nn.ReLU(),
+                    nn.Conv2d(16, 16, 3, padding=1),
+                    nn.ReLU(),
+                    nn.Conv2d(16, 16, 3, padding=1),
                     nn.ReLU(),
                     nn.Conv2d(16, 16, 3, padding=1),
                     nn.ReLU(),
@@ -236,7 +244,7 @@ def init_argparse() -> argparse.ArgumentParser:
     parser.add_argument("-n",
                         "--n_envs",
                         type=int,
-                        default=12,
+                        default=16,
                         help="Number of environments")
     parser.add_argument("-s",
                         "--seed",
@@ -282,7 +290,7 @@ if __name__ == "__main__":
         )
         exit()
 
-    env = make_dummy_env(num_envs=args.n_envs)
+    env = make_dummy_env(num_envs=args.n_envs, cls=SubprocVecEnv)
 
     # wrap env with a VecMonitor
     env = VecMonitor(env)

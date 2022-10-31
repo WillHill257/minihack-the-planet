@@ -7,4 +7,5 @@ logs/
 *.pth
 *.db*
 model.zip
-*/minihack_tensorboard/*
+*/minihack_tensorboard/**/*
+*/cluster_*
