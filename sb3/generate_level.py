@@ -1,6 +1,7 @@
 import gym
 import minihack
 from minihack import MiniHackSkill
+from nle import nethack
 
 class MazeGen:
 
@@ -8,6 +9,16 @@ class MazeGen:
 
         self.start_col = start_col
         self.args = args
+        MOVE_ACTIONS = tuple(nethack.CompassDirection)
+        self.ALL_ACTIONS = MOVE_ACTIONS + (
+            nethack.Command.PICKUP,
+            nethack.Command.QUAFF,
+            nethack.Command.ZAP,
+            nethack.Command.WEAR,
+            nethack.Command.FIRE,
+            nethack.Command.APPLY,
+            nethack.Command.RUSH
+        )
 
     def get_des(self):
         return f"""
@@ -80,7 +91,7 @@ MONSTER:('H',"Minotaur"),(34,06),asleep
     
     def generate(self, start_col=1):
         self.start_col = start_col
-        env = MiniHackSkill(des_file=self.get_des(), **self.args)
+        env = MiniHackSkill(des_file=self.get_des(),actions=self.ALL_ACTIONS, **self.args)
         return env
 
 

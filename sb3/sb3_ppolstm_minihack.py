@@ -31,7 +31,6 @@ class SaveCallback(BaseCallback):
       It must contains the file created by the ``Monitor`` wrapper.
     :param verbose: Verbosity level: 0 for no output, 1 for info messages, 2 for debug messages
     """
-
     def __init__(self, check_freq: int, verbose: int = 1):
         super(SaveCallback, self).__init__(verbose)
         self.check_freq = check_freq
@@ -45,7 +44,6 @@ class SaveCallback(BaseCallback):
 
 
 class MiniHackExtractor(BaseFeaturesExtractor):
-
     def __init__(self, observation_space: gym.spaces.Dict):
         # We do not know features-dim here before going over all the items,
         # so put something dummy for now. PyTorch requires calling
@@ -131,7 +129,6 @@ def make_env(generator, rank, seed=0):
     :param seed: (int) the inital seed for RNG
     :param rank: (int) index of the subprocess
     """
-
     def _init():
         env = generator.generate()
 
@@ -143,7 +140,6 @@ def make_env(generator, rank, seed=0):
 
 
 class VideoRecorderCallback(BaseCallback):
-
     def __init__(self,
                  eval_env: gym.Env,
                  render_freq: int,
@@ -194,15 +190,17 @@ class VideoRecorderCallback(BaseCallback):
             )
         return True
 
+
 def go_right_bonus(env, prev, action, curr):
     # Get the x coord of the @
     try:
         x = np.where(curr[1] == ord('@'))[1][0]
-        
+
         # Reward the player for moving towards the stairs
         return x * 0.001
     except:
         return 0
+
 
 def make_dummy_env(num_envs, cls=DummyVecEnv):
 
@@ -212,7 +210,9 @@ def make_dummy_env(num_envs, cls=DummyVecEnv):
     reward_manager.add_wield_event("frost horn", reward=5)
     reward_manager.add_wear_event("levitation", reward=5)
     reward_manager.add_wear_event("levitation boots", reward=5)
-    reward_manager.add_kill_event("Minotaur", reward=10, terminal_required=True)
+    reward_manager.add_kill_event("Minotaur",
+                                  reward=10,
+                                  terminal_required=True)
     reward_manager.add_custom_reward_fn(go_right_bonus)
 
     args = dict(observation_keys=['chars', 'chars_crop'],
@@ -226,7 +226,9 @@ def make_dummy_env(num_envs, cls=DummyVecEnv):
     maze_gen = MazeGen(args)
 
     # Create the vectorized environment
-    env = cls([make_env(maze_gen, i) for i in range(num_envs)])
+    random_seed = np.random.randint(0, 2**32 - 1)
+    env = cls(
+        [make_env(maze_gen, i, seed=random_seed) for i in range(num_envs)])
     return env
 
 
@@ -263,8 +265,12 @@ def init_argparse() -> argparse.ArgumentParser:
                         default=False,
                         action="store_true",
                         help="Evaluation mode")
-    
-    parser.add_argument('-f','--fresh', default=False, action='store_true', help='Start fresh')
+
+    parser.add_argument('-f',
+                        '--fresh',
+                        default=False,
+                        action='store_true',
+                        help='Start fresh')
 
     parser.add_argument("-r", "--save_frequency", type=int, default=5000)
 
@@ -277,13 +283,12 @@ if __name__ == "__main__":
 
     if args.eval:
         eval_env = make_dummy_env(1, cls=DummyVecEnv)
-        model = RecurrentPPO.load(
-            "/home/andrew/Documents/minihack-the-planet/sb3/model.zip")
+        model = RecurrentPPO.load("model")
         evaluate_policy(
             model,
             eval_env,
             render=True,
-            callback=lambda _locals, _globals: time.sleep(1),
+            callback=lambda _locals, _globals: time.sleep(1 / 24.0),
             # callback=grab_screens,
             n_eval_episodes=10,
             deterministic=True,
@@ -291,6 +296,7 @@ if __name__ == "__main__":
         exit()
 
     env = make_dummy_env(num_envs=args.n_envs, cls=SubprocVecEnv)
+    # env = make_dummy_env(1)
 
     # wrap env with a VecMonitor
     env = VecMonitor(env)
@@ -303,51 +309,44 @@ if __name__ == "__main__":
         model = RecurrentPPO.load("model")
         # Add the env to the model
         model.set_env(env)
-    else :
-        model = RecurrentPPO("MultiInputLstmPolicy",
-                            env,
-                            verbose=1,
-                            tensorboard_log="./minihack_tensorboard/",
-                            learning_rate=0.0002,
-                            n_steps=512,
-                            batch_size=256,
-                            n_epochs=10,
-                            gamma=0.99,
-                            gae_lambda=0.95,
-                            clip_range=0.2,
-                            clip_range_vf=None,
-                            normalize_advantage=True,
-                            ent_coef=0.000001,
-                            vf_coef=0.5,
-                            max_grad_norm=40,
-                            policy_kwargs=dict(
-                                features_extractor_class=MiniHackExtractor,
-                                ortho_init=False,
-                                optimizer_class=RMSprop,
-                                optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
-                                activation_fn=nn.ReLU,
-                                enable_critic_lstm=True,
-                                lstm_hidden_size=128,
-                                net_arch=[512],
-                            ))
+    else:
+        model = RecurrentPPO(
+            "MultiInputLstmPolicy",
+            env,
+            verbose=1,
+            #  tensorboard_log="./minihack_tensorboard/",
+            learning_rate=0.0002,
+            n_steps=128,
+            batch_size=64,
+            n_epochs=10,
+            gamma=0.99,
+            gae_lambda=0.95,
+            clip_range=0.2,
+            clip_range_vf=None,
+            normalize_advantage=True,
+            ent_coef=0.000001,
+            vf_coef=0.5,
+            max_grad_norm=40,
+            policy_kwargs=dict(
+                features_extractor_class=MiniHackExtractor,
+                ortho_init=False,
+                optimizer_class=RMSprop,
+                optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
+                activation_fn=nn.ReLU,
+                enable_critic_lstm=True,
+                lstm_hidden_size=128,
+                net_arch=[512],
+            ))
 
     save_callback = SaveCallback(max(args.save_frequency // args.n_envs, 1))
     eval_env = make_dummy_env(1)
     # video_recorder = VideoRecorderCallback(eval_env, render_freq=5000)
 
     try:
-        model.learn(total_timesteps=args.length,
-                    tb_log_name='ppo-lstm',
-                    reset_num_timesteps=False,
-                    callback=[save_callback])
+        model.learn(
+            total_timesteps=args.length,
+            # tb_log_name='ppo-lstm',
+            reset_num_timesteps=False,
+            callback=[save_callback])
     except KeyboardInterrupt:
         pass
-
-    evaluate_policy(
-        model,
-        eval_env,
-        render=True,
-        callback=lambda _locals, _globals: time.sleep(1),
-        n_eval_episodes=1,
-        deterministic=True,
-    )
