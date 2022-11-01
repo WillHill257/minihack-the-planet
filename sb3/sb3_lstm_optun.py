@@ -7,26 +7,26 @@ from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from stable_baselines3.common.callbacks import EvalCallback
 import minihack
 from math import log10, floor
-from sb3_ppolstm_minihack import MiniHackExtractor
+from sb3_ppolstm_minihack import MiniHackExtractor, make_dummy_env
 
 import torch
 from torch import nn
 import gym
 
 import optuna
+from joblib import Parallel, delayed
 
 N_TRIALS = 100
 N_STARTUP_TRIALS = 5
 N_EVALUATIONS = 2
-N_TIMESTEPS = 200
+N_TIMESTEPS = 50
 EVAL_FREQ = int(N_TIMESTEPS / N_EVALUATIONS)
 N_EVAL_EPISODES = 3
 
-ENV_ID = "MiniHack-River-v0"
-
 DEFAULT_HYPERPARAMS = dict(policy="MultiInputLstmPolicy",
                            policy_kwargs=dict(
-                               features_extractor_class=MiniHackExtractor, ))
+                               features_extractor_class=MiniHackExtractor,
+                               net_arch=[512]))
 
 
 def sample_ppo_lstm_params(trial: optuna.Trial) -> Dict[str, Any]:
@@ -38,8 +38,6 @@ def sample_ppo_lstm_params(trial: optuna.Trial) -> Dict[str, Any]:
     learning_rate = trial.suggest_float("lr", 1e-5, 1, log=True)
     ent_coef = trial.suggest_float("ent_coef", 0.00000001, 0.1, log=True)
     ortho_init = bool(trial.suggest_categorical("ortho_init", [False, True]))
-    net_arch = trial.suggest_categorical(
-        "net_arch", ["tiny", "small", "shared", "shared_large"])
     activation_fn = trial.suggest_categorical(
         "activation_fn", ["tanh", "relu", 'leaky_relu', 'elu'])
     n_epochs = trial.suggest_categorical("n_epochs", [1, 5, 10, 20])
@@ -49,20 +47,7 @@ def sample_ppo_lstm_params(trial: optuna.Trial) -> Dict[str, Any]:
     lstm_hidden_size = 2**trial.suggest_int("lstm_hidden_size", 3, 10)
     vf_coef = float(trial.suggest_float("vf_coef", 1e-4, 1, log=True))
     batch_size = 2**trial.suggest_int("batch_size", 3, 9)
-
-
-    net_arch = {
-        "tiny": [{
-            "pi": [64],
-            "vf": [64]
-        }],
-        "small": [{
-            "pi": [64, 64],
-            "vf": [64, 64]
-        }],
-        "shared": [256],
-        "shared_large": [512]
-    }[net_arch]
+    n_lstm_layers = trial.suggest_int("n_lstm_layers", 1, 8)
 
     # Display true values
     trial.set_user_attr("gamma", gamma)
@@ -71,10 +56,6 @@ def sample_ppo_lstm_params(trial: optuna.Trial) -> Dict[str, Any]:
     trial.set_user_attr("lstm_hidden_size", lstm_hidden_size)
     trial.set_user_attr("clip_range", clip_range)
     trial.set_user_attr("batch_size", batch_size)
-    trial.set_user_attr("net_arch", net_arch)
-
-
-
 
     activation_fn = {
         "tanh": nn.Tanh,
@@ -95,8 +76,8 @@ def sample_ppo_lstm_params(trial: optuna.Trial) -> Dict[str, Any]:
         "ent_coef": ent_coef,
         "max_grad_norm": max_grad_norm,
         "policy_kwargs": {
+            "n_lstm_layers": n_lstm_layers,
             "enable_critic_lstm": enable_critic_lstm,
-            "net_arch": net_arch,
             "activation_fn": activation_fn,
             "ortho_init": ortho_init,
             "lstm_hidden_size": lstm_hidden_size
@@ -106,7 +87,6 @@ def sample_ppo_lstm_params(trial: optuna.Trial) -> Dict[str, Any]:
 
 class TrialEvalCallback(EvalCallback):
     """Callback used for evaluating and reporting a trial."""
-
     def __init__(
         self,
         eval_env: gym.Env,
@@ -147,18 +127,12 @@ def objective(trial: optuna.Trial):
     kwargs = DEFAULT_HYPERPARAMS.copy()
     # Sample hyperparameters
     kwargs.update(sample_ppo_lstm_params(trial))
-    args = {
-        'observation_keys': ['chars', 'chars_crop'],
-        'penalty_time': -0.005,
-        'penalty_step': -0.1
-    }
-    env = gym.make(ENV_ID, **args)
-    env._max_episode_steps = 30
+
+    env = make_dummy_env(1)
 
     model = RecurrentPPO(env=env, **kwargs)
 
-    eval_env = gym.make(ENV_ID, **args)
-    eval_env._max_episode_steps = 30
+    eval_env = make_dummy_env(1)
 
     eval_callback = TrialEvalCallback(eval_env,
                                       trial,
@@ -197,14 +171,25 @@ if __name__ == '__main__':
     pruner = optuna.pruners.MedianPruner(n_startup_trials=N_STARTUP_TRIALS,
                                          n_warmup_steps=N_EVALUATIONS // 3)
 
-    study = optuna.create_study(
-        study_name='lunar_optuna',
-        sampler=sampler,
-        # pruner=pruner,
-        storage='sqlite:///params.db',
-        direction="maximize")
+    storage = optuna.storages.RDBStorage(
+        url='sqlite:///params.db',
+        engine_kwargs={"connect_args": {
+            "timeout": 100
+        }})
+    study = optuna.create_study(study_name='lunar_optuna',
+                                sampler=sampler,
+                                pruner=pruner,
+                                storage=storage,
+                                direction="maximize")
     try:
-        study.optimize(objective, n_trials=N_TRIALS, n_jobs=-1, timeout=600)
+        # study.optimize(objective, n_trials=N_TRIALS, n_jobs=-1, timeout=600)
+        n_jobs = 4
+        r = Parallel(n_jobs=n_jobs)([
+            delayed(study.optimize)(
+                objective,
+                n_trials=N_TRIALS,
+            ) for i in range(n_jobs)
+        ])
     except KeyboardInterrupt:
         pass
 

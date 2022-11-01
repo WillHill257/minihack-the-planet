@@ -39,6 +39,7 @@ class SaveCallback(BaseCallback):
         if self.n_calls % self.check_freq == 0:
             print(f'Saving model at step {self.num_timesteps}')
             self.model.save('model')
+            print('', flush=True)
 
         return True
 
@@ -191,33 +192,58 @@ class VideoRecorderCallback(BaseCallback):
         return True
 
 
+def glyph_pos(glyphs, glyph):
+    glyph_positions = np.where(np.asarray(glyphs) == glyph)
+    assert len(glyph_positions) == 2
+    if glyph_positions[0].shape[0] == 0:
+        return None
+    return np.array([glyph_positions[0][0], glyph_positions[1][0]],
+                    dtype=np.float32)
+
+
 def go_right_bonus(env, prev, action, curr):
     # Get the x coord of the @
-    try:
-        x = np.where(curr[1] == ord('@'))[1][0]
+    glyphs = curr[env._observation_keys.index('chars')]
+    cur_pos = glyph_pos(glyphs, ord('@'))
+    prev_pos = glyph_pos(glyphs, ord('@'))
 
-        # Reward the player for moving towards the stairs
-        return x * 0.001
-    except:
+    if cur_pos is None or prev_pos is None:
         return 0
+
+    # Get the x coord of cur_pos
+    cur_x = cur_pos[1]
+    prev_x = prev_pos[1]
+
+    # return the reward for moving to the right
+    return 0.001 * (cur_x - prev_x)
+
+
+def distance_to_staircase_reward(env, prev_obs, action, current_obs):
+    glyphs = current_obs[env._observation_keys.index('chars')]
+    cur_pos = glyph_pos(glyphs, ord('@'))
+    staircase_pos = glyph_pos(glyphs, ord('>'))
+    if staircase_pos is None:
+        # Staircase has been reached
+        return 0.0
+    distance = np.linalg.norm(cur_pos - staircase_pos)
+    distance /= np.max(glyphs.shape)
+    return -distance
 
 
 def make_dummy_env(num_envs, cls=DummyVecEnv):
 
     reward_manager = RewardManager()
-    reward_manager.add_wield_event("death", reward=5)
-    reward_manager.add_wield_event("cold", reward=5)
-    reward_manager.add_wield_event("frost horn", reward=5)
-    reward_manager.add_wear_event("levitation", reward=5)
-    reward_manager.add_wear_event("levitation boots", reward=5)
-    reward_manager.add_kill_event("Minotaur",
-                                  reward=10,
-                                  terminal_required=True)
+    reward_manager.add_wield_event("death", reward=1)
+    reward_manager.add_wield_event("cold", reward=1)
+    reward_manager.add_wield_event("frost horn", reward=1)
+    reward_manager.add_wear_event("levitation", reward=1)
+    reward_manager.add_wear_event("levitation boots", reward=1)
+    reward_manager.add_kill_event("Minotaur", reward=1, terminal_required=True)
     reward_manager.add_custom_reward_fn(go_right_bonus)
+    reward_manager.add_custom_reward_fn(distance_to_staircase_reward)
 
     args = dict(observation_keys=['chars', 'chars_crop'],
                 max_episode_steps=1000,
-                penalty_mode='linear',
                 reward_lose=-1.0,
                 penalty_time=-0.005,
                 penalty_step=-0.1,
@@ -246,7 +272,7 @@ def init_argparse() -> argparse.ArgumentParser:
     parser.add_argument("-n",
                         "--n_envs",
                         type=int,
-                        default=16,
+                        default=4,
                         help="Number of environments")
     parser.add_argument("-s",
                         "--seed",
@@ -257,8 +283,13 @@ def init_argparse() -> argparse.ArgumentParser:
     parser.add_argument('-l',
                         '--length',
                         type=int,
-                        default=200_000,
+                        default=5_000_000,
                         help='How long to train for')
+    parser.add_argument('-p',
+                        '--par_cls',
+                        type=str,
+                        default='DummyVecEnv',
+                        help='Parallelization class')
 
     parser.add_argument("-t",
                         "--eval",
@@ -272,7 +303,7 @@ def init_argparse() -> argparse.ArgumentParser:
                         action='store_true',
                         help='Start fresh')
 
-    parser.add_argument("-r", "--save_frequency", type=int, default=5000)
+    parser.add_argument("-r", "--save_frequency", type=int, default=20000)
 
     return parser
 
@@ -295,7 +326,11 @@ if __name__ == "__main__":
         )
         exit()
 
-    env = make_dummy_env(num_envs=args.n_envs, cls=SubprocVecEnv)
+    cls = {
+        'DummyVecEnv': DummyVecEnv,
+        'SubprocVecEnv': SubprocVecEnv
+    }[args.par_cls]
+    env = make_dummy_env(num_envs=args.n_envs, cls=cls)
     # env = make_dummy_env(1)
 
     # wrap env with a VecMonitor
@@ -315,26 +350,27 @@ if __name__ == "__main__":
             env,
             verbose=1,
             #  tensorboard_log="./minihack_tensorboard/",
-            learning_rate=0.0002,
-            n_steps=128,
+            learning_rate=0.001,
+            n_steps=16,
             batch_size=64,
             n_epochs=10,
-            gamma=0.99,
+            gamma=0.95,
             gae_lambda=0.95,
             clip_range=0.2,
             clip_range_vf=None,
             normalize_advantage=True,
-            ent_coef=0.000001,
-            vf_coef=0.5,
-            max_grad_norm=40,
+            ent_coef=0.01,
+            vf_coef=1.0,
+            max_grad_norm=5.0,
             policy_kwargs=dict(
                 features_extractor_class=MiniHackExtractor,
                 ortho_init=False,
-                optimizer_class=RMSprop,
-                optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
+                # optimizer_class=RMSprop,
+                # optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
                 activation_fn=nn.ReLU,
                 enable_critic_lstm=True,
-                lstm_hidden_size=128,
+                n_lstm_layers=8,
+                lstm_hidden_size=32,
                 net_arch=[512],
             ))
 
