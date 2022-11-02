@@ -20,6 +20,8 @@ from generate_level import MazeGen
 import torch
 from torch import nn
 
+from maze_navigator import navigate_maze
+
 
 class SaveCallback(BaseCallback):
     """
@@ -31,15 +33,16 @@ class SaveCallback(BaseCallback):
       It must contains the file created by the ``Monitor`` wrapper.
     :param verbose: Verbosity level: 0 for no output, 1 for info messages, 2 for debug messages
     """
+
     def __init__(self, check_freq: int, verbose: int = 1):
         super(SaveCallback, self).__init__(verbose)
         self.check_freq = check_freq
 
     def _on_step(self) -> bool:
         if self.n_calls % self.check_freq == 0:
-            print(f'Saving model at step {self.num_timesteps}')
-            self.model.save('model')
-            print('', flush=True)
+            print(f"Saving model at step {self.num_timesteps}")
+            self.model.save("model")
+            print("", flush=True)
 
         return True
 
@@ -49,8 +52,7 @@ class MiniHackExtractor(BaseFeaturesExtractor):
         # We do not know features-dim here before going over all the items,
         # so put something dummy for now. PyTorch requires calling
         # nn.Module.__init__ before adding modules
-        super(MiniHackExtractor, self).__init__(observation_space,
-                                                features_dim=1)
+        super(MiniHackExtractor, self).__init__(observation_space, features_dim=1)
         self.embedding_size = 32
 
         self.embed = nn.Embedding(128, self.embedding_size)
@@ -62,7 +64,7 @@ class MiniHackExtractor(BaseFeaturesExtractor):
         # so go over all the spaces and compute output feature sizes
         for key, subspace in observation_space.spaces.items():
 
-            if key == 'chars':
+            if key == "chars":
                 # We will just downsample one channel of the image by 4x4 and flatten.
                 # Assume the image is single-channel (subspace.shape[0] == 0)
                 extractors[key] = nn.Sequential(
@@ -79,7 +81,7 @@ class MiniHackExtractor(BaseFeaturesExtractor):
                     nn.Flatten(),
                 )
                 total_concat_size += 16 * 21 * 79
-            elif key == 'chars_crop':
+            elif key == "chars_crop":
                 # Run through a simple MLP
                 extractors[key] = nn.Sequential(
                     nn.Conv2d(self.embedding_size, 16, 3, padding=1),
@@ -130,6 +132,7 @@ def make_env(generator, rank, seed=0):
     :param seed: (int) the inital seed for RNG
     :param rank: (int) index of the subprocess
     """
+
     def _init():
         env = generator.generate()
 
@@ -141,11 +144,13 @@ def make_env(generator, rank, seed=0):
 
 
 class VideoRecorderCallback(BaseCallback):
-    def __init__(self,
-                 eval_env: gym.Env,
-                 render_freq: int,
-                 n_eval_episodes: int = 1,
-                 deterministic: bool = True):
+    def __init__(
+        self,
+        eval_env: gym.Env,
+        render_freq: int,
+        n_eval_episodes: int = 1,
+        deterministic: bool = True,
+    ):
         """
         Records a video of an agent's trajectory traversing ``eval_env`` and logs it to TensorBoard
 
@@ -164,8 +169,7 @@ class VideoRecorderCallback(BaseCallback):
         if self.n_calls % self._render_freq == 0:
             screens = []
 
-            def grab_screens(_locals: Dict[str, Any],
-                             _globals: Dict[str, Any]) -> None:
+            def grab_screens(_locals: Dict[str, Any], _globals: Dict[str, Any]) -> None:
                 """
                 Renders the environment in its current state, recording the screen in the captured `screens` list
 
@@ -197,15 +201,14 @@ def glyph_pos(glyphs, glyph):
     assert len(glyph_positions) == 2
     if glyph_positions[0].shape[0] == 0:
         return None
-    return np.array([glyph_positions[0][0], glyph_positions[1][0]],
-                    dtype=np.float32)
+    return np.array([glyph_positions[0][0], glyph_positions[1][0]], dtype=np.float32)
 
 
 def go_right_bonus(env, prev, action, curr):
     # Get the x coord of the @
-    glyphs = curr[env._observation_keys.index('chars')]
-    cur_pos = glyph_pos(glyphs, ord('@'))
-    prev_pos = glyph_pos(glyphs, ord('@'))
+    glyphs = curr[env._observation_keys.index("chars")]
+    cur_pos = glyph_pos(glyphs, ord("@"))
+    prev_pos = glyph_pos(glyphs, ord("@"))
 
     if cur_pos is None or prev_pos is None:
         return 0
@@ -219,9 +222,9 @@ def go_right_bonus(env, prev, action, curr):
 
 
 def distance_to_staircase_reward(env, prev_obs, action, current_obs):
-    glyphs = current_obs[env._observation_keys.index('chars')]
-    cur_pos = glyph_pos(glyphs, ord('@'))
-    staircase_pos = glyph_pos(glyphs, ord('>'))
+    glyphs = current_obs[env._observation_keys.index("chars")]
+    cur_pos = glyph_pos(glyphs, ord("@"))
+    staircase_pos = glyph_pos(glyphs, ord(">"))
     if staircase_pos is None:
         # Staircase has been reached
         return 0.0
@@ -230,7 +233,7 @@ def distance_to_staircase_reward(env, prev_obs, action, current_obs):
     return -distance
 
 
-def make_dummy_env(num_envs, cls=DummyVecEnv):
+def make_dummy_env(num_envs, cls=DummyVecEnv, evaluation=False):
 
     reward_manager = RewardManager()
     reward_manager.add_wield_event("death", reward=1)
@@ -242,19 +245,20 @@ def make_dummy_env(num_envs, cls=DummyVecEnv):
     reward_manager.add_custom_reward_fn(go_right_bonus)
     reward_manager.add_custom_reward_fn(distance_to_staircase_reward)
 
-    args = dict(observation_keys=['chars', 'chars_crop'],
-                max_episode_steps=1000,
-                reward_lose=-1.0,
-                penalty_time=-0.005,
-                penalty_step=-0.1,
-                reward_manager=reward_manager)
+    args = dict(
+        observation_keys=["chars", "chars_crop"],
+        max_episode_steps=1000,
+        reward_lose=-1.0,
+        penalty_time=-0.005,
+        penalty_step=-0.1,
+        reward_manager=reward_manager,
+    )
 
-    maze_gen = MazeGen(args)
+    maze_gen = MazeGen(args, evaluation=evaluation)
 
     # Create the vectorized environment
     random_seed = np.random.randint(0, 2**32 - 1)
-    env = cls(
-        [make_env(maze_gen, i, seed=random_seed) for i in range(num_envs)])
+    env = cls([make_env(maze_gen, i, seed=random_seed) for i in range(num_envs)])
     return env
 
 
@@ -262,46 +266,35 @@ def init_argparse() -> argparse.ArgumentParser:
 
     parser = argparse.ArgumentParser(
         usage="%(prog)s [OPTION] [FILE]...",
-        description="Print or check SHA1 (160-bit) checksums.")
+        description="Print or check SHA1 (160-bit) checksums.",
+    )
 
-    parser.add_argument("-e",
-                        "--env_id",
-                        type=str,
-                        default="MiniHack-CorridorBattle-v0",
-                        help="Environment ID")
-    parser.add_argument("-n",
-                        "--n_envs",
-                        type=int,
-                        default=4,
-                        help="Number of environments")
-    parser.add_argument("-s",
-                        "--seed",
-                        type=int,
-                        default=0,
-                        help="Random seed")
+    parser.add_argument(
+        "-e",
+        "--env_id",
+        type=str,
+        default="MiniHack-CorridorBattle-v0",
+        help="Environment ID",
+    )
+    parser.add_argument(
+        "-n", "--n_envs", type=int, default=4, help="Number of environments"
+    )
+    parser.add_argument("-s", "--seed", type=int, default=0, help="Random seed")
     # Parse how long to train for
-    parser.add_argument('-l',
-                        '--length',
-                        type=int,
-                        default=5_000_000,
-                        help='How long to train for')
-    parser.add_argument('-p',
-                        '--par_cls',
-                        type=str,
-                        default='DummyVecEnv',
-                        help='Parallelization class')
+    parser.add_argument(
+        "-l", "--length", type=int, default=5_000_000, help="How long to train for"
+    )
+    parser.add_argument(
+        "-p", "--par_cls", type=str, default="DummyVecEnv", help="Parallelization class"
+    )
 
-    parser.add_argument("-t",
-                        "--eval",
-                        default=False,
-                        action="store_true",
-                        help="Evaluation mode")
+    parser.add_argument(
+        "-t", "--eval", default=False, action="store_true", help="Evaluation mode"
+    )
 
-    parser.add_argument('-f',
-                        '--fresh',
-                        default=False,
-                        action='store_true',
-                        help='Start fresh')
+    parser.add_argument(
+        "-f", "--fresh", default=False, action="store_true", help="Start fresh"
+    )
 
     parser.add_argument("-r", "--save_frequency", type=int, default=20000)
 
@@ -313,7 +306,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.eval:
-        eval_env = make_dummy_env(1, cls=DummyVecEnv)
+        eval_env = make_dummy_env(1, cls=DummyVecEnv, evaluation=True)
+
+        # navigate the maze first
+        observations = eval_env.reset()
+        navigate_maze(eval_env, observations, visualise=True)
+
         model = RecurrentPPO.load("model")
         evaluate_policy(
             model,
@@ -326,10 +324,7 @@ if __name__ == "__main__":
         )
         exit()
 
-    cls = {
-        'DummyVecEnv': DummyVecEnv,
-        'SubprocVecEnv': SubprocVecEnv
-    }[args.par_cls]
+    cls = {"DummyVecEnv": DummyVecEnv, "SubprocVecEnv": SubprocVecEnv}[args.par_cls]
     env = make_dummy_env(num_envs=args.n_envs, cls=cls)
     # env = make_dummy_env(1)
 
@@ -372,7 +367,8 @@ if __name__ == "__main__":
                 n_lstm_layers=8,
                 lstm_hidden_size=32,
                 net_arch=[512],
-            ))
+            ),
+        )
 
     save_callback = SaveCallback(max(args.save_frequency // args.n_envs, 1))
     eval_env = make_dummy_env(1)
@@ -383,6 +379,7 @@ if __name__ == "__main__":
             total_timesteps=args.length,
             # tb_log_name='ppo-lstm',
             reset_num_timesteps=False,
-            callback=[save_callback])
+            callback=[save_callback],
+        )
     except KeyboardInterrupt:
         pass

@@ -3,11 +3,11 @@ import minihack
 from minihack import MiniHackSkill
 from nle import nethack
 
+
 class MazeGen:
+    def __init__(self, args, evaluation=False):
 
-    def __init__(self,args, start_col=1):
-
-        self.start_col = start_col
+        self.only_evaluation = evaluation
         self.args = args
         MOVE_ACTIONS = tuple(nethack.CompassDirection)
         self.ALL_ACTIONS = MOVE_ACTIONS + (
@@ -17,7 +17,7 @@ class MazeGen:
             nethack.Command.WEAR,
             nethack.Command.FIRE,
             nethack.Command.APPLY,
-            nethack.Command.RUSH
+            nethack.Command.RUSH,
         )
 
     def get_des(self):
@@ -45,7 +45,8 @@ ENDMAP
 
 STAIR:levregion(01,00,15,20),levregion(15,1,70,16),up
 # BRANCH:levregion(01,00,15,20),levregion(15,1,70,16)
-BRANCH:(1,6,1,6),(0,6,0,6)
+# BRANCH:(1,6,1,6),(0,6,0,6)
+{"BRANCH:levregion(01,00,15,20),levregion(15,1,70,16)" if self.only_evaluation else "BRANCH:(1,6,1,6),(0,6,0,6)" }
 REGION:(0,0,45,20),lit,"ordinary"
 
 $entry_room = selection:fillrect (3,4,6,8)
@@ -88,20 +89,20 @@ OBJECT:('/',"death"),rndcoord($entry_room),blessed
 MONSTER:('H',"Minotaur"),(34,06),asleep
 """
 
-    
     def generate(self, start_col=1):
         self.start_col = start_col
-        env = MiniHackSkill(des_file=self.get_des(),actions=self.ALL_ACTIONS, **self.args)
+        env = MiniHackSkill(
+            des_file=self.get_des(), actions=self.ALL_ACTIONS, **self.args
+        )
         return env
-
 
 
 if __name__ == "__main__":
     args = {
-        'observation_keys':["chars", 'chars_crop'],
-        'penalty_mode':'linear',
-        'penalty_time':-0.001,
-        'penalty_step':-0.01
+        "observation_keys": ["chars", "chars_crop"],
+        "penalty_mode": "linear",
+        "penalty_time": -0.001,
+        "penalty_step": -0.01,
     }
     maze_gen = MazeGen(args)
     maze = maze_gen.generate()
