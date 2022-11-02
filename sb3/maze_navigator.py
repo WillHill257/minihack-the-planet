@@ -123,4 +123,15 @@ def navigate_maze(env, observations, visualise=False):
             time.sleep(1 / 24)
 
     # we are now at the end of the maze, repeat the last action we took (which was to walk forwards into the doorway)
-    observations, rewards, dones, infos = env.step(action)
+    through_door = False
+    while not through_door:
+        # keep stepping until get through the door
+        observations, rewards, dones, infos = env.step(action)
+        observations = observations["chars_crop"][0]
+        agent_position = glyph_pos(observations, ord("@"))
+        through_door = observations[
+            tuple(agent_position + directions[(direction_facing + 2) % 4])
+        ] == ord("-")
+        if visualise:
+            env.render()
+            time.sleep(1 / 24)
