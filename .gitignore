@@ -9,3 +9,4 @@ logs/
 model.zip
 */minihack_tensorboard/**/*
 */cluster_*
+env
