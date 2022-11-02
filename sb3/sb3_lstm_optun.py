@@ -16,10 +16,13 @@ import gym
 import optuna
 from joblib import Parallel, delayed
 
+import warnings
+warnings.simplefilter(action='ignore', category=UserWarning)
+
 N_TRIALS = 100
 N_STARTUP_TRIALS = 5
 N_EVALUATIONS = 2
-N_TIMESTEPS = 50
+N_TIMESTEPS = 20
 EVAL_FREQ = int(N_TIMESTEPS / N_EVALUATIONS)
 N_EVAL_EPISODES = 3
 
@@ -104,6 +107,7 @@ class TrialEvalCallback(EvalCallback):
             eval_freq=eval_freq,
             deterministic=deterministic,
             verbose=verbose,
+            warn=False,
         )
         self.trial = trial
         self.eval_idx = 0
@@ -174,7 +178,7 @@ if __name__ == '__main__':
     storage = optuna.storages.RDBStorage(
         url='sqlite:///params.db',
         engine_kwargs={"connect_args": {
-            "timeout": 100
+            "timeout": 500
         }})
     study = optuna.create_study(study_name='lunar_optuna',
                                 sampler=sampler,
@@ -183,14 +187,14 @@ if __name__ == '__main__':
                                 direction="maximize")
     try:
         # study.optimize(objective, n_trials=N_TRIALS, n_jobs=-1, timeout=600)
-        n_jobs = 4
+        n_jobs = 2
         r = Parallel(n_jobs=n_jobs)([
             delayed(study.optimize)(
                 objective,
                 n_trials=N_TRIALS,
             ) for i in range(n_jobs)
         ])
-    except KeyboardInterrupt:
+    except:
         pass
 
     print("Number of finished trials: ", len(study.trials))
