@@ -348,10 +348,10 @@ if __name__ == "__main__":
             "MultiInputPolicy",
             env,
             verbose=1,
-            learning_rate=0.0001,
-            learning_starts=1000,
-            batch_size=32,
+            learning_rate=0.001,
+            batch_size=64,
             gamma=0.95,
+
         )
 
     save_callback = SaveCallback(max(args.save_frequency // args.n_envs, 1))
@@ -360,7 +360,7 @@ if __name__ == "__main__":
 
     try:
         model.learn(
-            total_timesteps=1e7,
+            total_timesteps=args.length,
             # tb_log_name='ppo-lstm',
             reset_num_timesteps=False,
             callback=[save_callback],
