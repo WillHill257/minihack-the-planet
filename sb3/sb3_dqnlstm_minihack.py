@@ -348,9 +348,10 @@ if __name__ == "__main__":
             "MultiInputPolicy",
             env,
             verbose=1,
-            learning_rate=0.001,
+            learning_rate=0.0001,
             batch_size=64,
             gamma=0.95,
+
 
         )
 
