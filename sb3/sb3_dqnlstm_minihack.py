@@ -348,21 +348,10 @@ if __name__ == "__main__":
             "MultiInputPolicy",
             env,
             verbose=1,
-            #  tensorboard_log="./minihack_tensorboard/",
-            learning_rate=0.001,
-            batch_size=64,
+            learning_rate=0.0001,
+            learning_starts=1000,
+            batch_size=32,
             gamma=0.95,
-            # policy_kwargs=dict(
-            #     features_extractor_class=MiniHackExtractor,
-            #     ortho_init=False,
-            #     # optimizer_class=RMSprop,
-            #     # optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
-            #     activation_fn=nn.ReLU,
-            #     enable_critic_lstm=True,
-            #     n_lstm_layers=8,
-            #     lstm_hidden_size=32,
-            #     net_arch=[512],
-            # ),
         )
 
     save_callback = SaveCallback(max(args.save_frequency // args.n_envs, 1))
@@ -371,7 +360,7 @@ if __name__ == "__main__":
 
     try:
         model.learn(
-            total_timesteps=args.length,
+            total_timesteps=1e7,
             # tb_log_name='ppo-lstm',
             reset_num_timesteps=False,
             callback=[save_callback],
