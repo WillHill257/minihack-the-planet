@@ -16,4 +16,4 @@ To change the hyperparameters (for training):
 - go to line 346 in the file **sb3_ppolstm_minihack.py**
 - change the relevant values
 
-**_Note: the current model.zip file is our current (best) agent._**
+**_Note: the current model.zip file is our current (best) agent. This file is too large to upload to GitHub and so is not present in the repository. However, it has been included in the code submission made to moodle and so is available for testing._**

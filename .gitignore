@@ -14,3 +14,4 @@ plot
 sb3/dqn_minihack
 backup
 *.cast
+model.zip
