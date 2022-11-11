@@ -17,6 +17,8 @@ Each branch contains a README with the relevant instructions for training and wa
 
 If the installation of NLE or Minihack fail on the latest version of Ubuntu, the source code may need to be edited and built from scratch. Instructions for what to change are included below.
 
+Note: you will also need to install the latest version of the package `stable-baselines3`.
+
 ### Nethack Learning Environment (NLE)
 
 1. Clone NLE
