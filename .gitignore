@@ -6,7 +6,11 @@ wandb
 logs/
 *.pth
 *.db*
-model.zip
 */minihack_tensorboard/**/*
 */cluster_*
 env
+venv
+plot
+sb3/dqn_minihack
+backup
+*.cast

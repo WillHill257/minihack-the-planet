@@ -1,54 +1,19 @@
-# minihack-the-planet
+# Recurrent PPO
 
-## Setup
+To train the RecurrentPPO agent:
 
-### Nethack Learning Environment
+- `cd` into the **sb3** folder.
+- run `python3 sb3_ppolstm_minihack.py`
+- This will generate a **model.zip** file in the same diretory.
 
-1. Clone NLE 
+To evaluate and visualise the model in the environment:
 
-```
-git clone https://github.com/facebookresearch/nle --recursive
-```
+- ensure that there is a **model.zip** file already
+- run `python3 sb3_ppolstm_minihack.py --eval`
 
-2. Install brew
+To change the hyperparameters (for training):
 
-For Linux,
-```
-sudo apt-get install -y build-essential autoconf libtool pkg-config \
-    python3-dev python3-pip python3-numpy git flex bison libbz2-dev
-```
-For Mac,
-```
-brew install cmake
-```
+- go to line 346 in the file **sb3_ppolstm_minihack.py**
+- change the relevant values
 
-3. Setup virtual environment
-
-```
-conda create -y -n nle python=3.8
-```
-
-4. Make NLE
-
-```
-pip install -e ".[all]"
-```
-
-### Minihack
-
-1. Clone Minihack 
-
-```
-git clone https://github.com/facebookresearch/minihack
-```
-
-2. Change things around
-    
-    In `base.py`:
-
-    1. Replace all `self.env` with `self.nethack`
-
-    
-    In `agent/common/envs/wrapper.py`
-
-    1. Replace all `env._actions` with `.actions`
+**_Note: the current model.zip file is our current (best) agent._**

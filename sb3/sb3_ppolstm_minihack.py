@@ -11,7 +11,6 @@ from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv, VecMoni
 from stable_baselines3.common.utils import set_random_seed
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
-from stable_baselines3.common.evaluation import evaluate_policy
 from sb3_contrib import RecurrentPPO
 from stable_baselines3.common.logger import Video
 from torch.optim import RMSprop
@@ -21,6 +20,7 @@ import torch
 from torch import nn
 
 from maze_navigator import navigate_maze
+from evaluate_ppolstm import evaluate_policy
 
 
 class SaveCallback(BaseCallback):
@@ -308,11 +308,14 @@ if __name__ == "__main__":
     if args.eval:
         eval_env = make_dummy_env(1, cls=DummyVecEnv, evaluation=True)
 
+        eval_env = VecMonitor(eval_env)
+
         # navigate the maze first
         observations = eval_env.reset()
-        navigate_maze(eval_env, observations, visualise=True)
+        # navigate_maze(eval_env, observations, visualise=True)
 
         model = RecurrentPPO.load("model")
+        print("Model loaded")
         evaluate_policy(
             model,
             eval_env,
@@ -344,25 +347,25 @@ if __name__ == "__main__":
             "MultiInputLstmPolicy",
             env,
             verbose=1,
-            #  tensorboard_log="./minihack_tensorboard/",
-            learning_rate=0.001,
+            tensorboard_log="./minihack_tensorboard/",
+            learning_rate=0.0002,
             n_steps=16,
-            batch_size=64,
+            batch_size=16,
             n_epochs=10,
-            gamma=0.95,
-            gae_lambda=0.95,
+            gamma=0.99,
+            gae_lambda=0.99,
             clip_range=0.2,
             clip_range_vf=None,
             normalize_advantage=True,
-            ent_coef=0.01,
-            vf_coef=1.0,
-            max_grad_norm=5.0,
+            ent_coef=0.0003,
+            vf_coef=0.0004,
+            max_grad_norm=0.92,
             policy_kwargs=dict(
                 features_extractor_class=MiniHackExtractor,
                 ortho_init=False,
                 # optimizer_class=RMSprop,
                 # optimizer_kwargs=dict(alpha=0.99, eps=0.000001),
-                activation_fn=nn.ReLU,
+                activation_fn=nn.Tanh,
                 enable_critic_lstm=True,
                 n_lstm_layers=8,
                 lstm_hidden_size=32,
