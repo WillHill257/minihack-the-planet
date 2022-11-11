@@ -11,7 +11,6 @@ from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv, VecMoni
 from stable_baselines3.common.utils import set_random_seed
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
-from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import DQN
 from stable_baselines3.common.logger import Video
 from torch.optim import RMSprop
@@ -21,6 +20,7 @@ import torch
 from torch import nn
 
 from maze_navigator import navigate_maze
+from evaluate_dqn import evaluate_policy
 
 
 class SaveCallback(BaseCallback):
@@ -310,12 +310,15 @@ if __name__ == "__main__":
 
     if args.eval:
         eval_env = make_dummy_env(1, cls=DummyVecEnv, evaluation=True)
+        eval_env = VecMonitor(eval_env)
 
         # navigate the maze first
         observations = eval_env.reset()
-        navigate_maze(eval_env, observations, visualise=True)
+
+        # navigate_maze(eval_env, observations, visualise=True)
 
         model = DQN.load("model")
+        print("Model loaded")
         evaluate_policy(
             model,
             eval_env,
@@ -330,6 +333,7 @@ if __name__ == "__main__":
     cls = {"DummyVecEnv": DummyVecEnv,
            "SubprocVecEnv": SubprocVecEnv}[args.par_cls]
     env = make_dummy_env(num_envs=args.n_envs, cls=cls)
+
     # env = make_dummy_env(1)
 
     # wrap env with a VecMonitor
@@ -349,9 +353,15 @@ if __name__ == "__main__":
             env,
             verbose=1,
             learning_rate=0.0001,
-            batch_size=64,
+            learning_starts=10000,
+            target_update_interval=5000,
+            train_freq=1,
+            batch_size=32,
             gamma=0.95,
-
+            exploration_fraction=0.01,
+            exploration_initial_eps=1.0,
+            exploration_final_eps=0.1,
+            tensorboard_log="./dqn_minihack/",
 
         )
 

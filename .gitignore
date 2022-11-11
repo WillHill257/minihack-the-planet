@@ -11,3 +11,6 @@ model.zip
 */cluster_*
 env
 venv
+plot
+sb3/dqn_minihack
+backup

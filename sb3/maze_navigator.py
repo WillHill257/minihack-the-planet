@@ -111,7 +111,8 @@ def navigate_maze(env, observations, visualise=False):
         ] == ord("+")
 
         # convert the direction want to travel in to an actual action
-        action = [direction_facing % 4]  # env.MOVE_ACTIONS[direction_facing % 4]
+        # env.MOVE_ACTIONS[direction_facing % 4]
+        action = [direction_facing % 4]
 
         # perform the action
         observations, rewards, dones, infos = env.step(action)
@@ -120,7 +121,7 @@ def navigate_maze(env, observations, visualise=False):
         # visualise
         if visualise:
             env.render()
-            time.sleep(1 / 24)
+            time.sleep(1 / 1000)
 
     # we are now at the end of the maze, repeat the last action we took (which was to walk forwards into the doorway)
     through_door = False
@@ -135,3 +136,4 @@ def navigate_maze(env, observations, visualise=False):
         if visualise:
             env.render()
             time.sleep(1 / 24)
+        # print("kicking through door")
